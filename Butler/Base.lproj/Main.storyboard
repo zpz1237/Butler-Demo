@@ -21,6 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="479" y="454"/>
         </scene>
         <!--Launch View Controller-->
         <scene sceneID="Qbd-ud-UMr">
@@ -33,12 +34,54 @@
                     <view key="view" contentMode="scaleToFill" id="hF1-Vl-giO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7A-1l-yFx">
+                                <rect key="frame" x="270" y="520" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="DuN-Bw-x6U"/>
+                                    <constraint firstAttribute="width" constant="60" id="smm-lZ-TGr"/>
+                                </constraints>
+                                <state key="normal" image="Power"/>
+                                <connections>
+                                    <segue destination="IHA-qF-rwN" kind="presentation" id="phi-Ow-TGP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SPA-At-9Uh" firstAttribute="top" secondItem="O7A-1l-yFx" secondAttribute="bottom" constant="20" id="MgB-hD-3FJ"/>
+                            <constraint firstItem="O7A-1l-yFx" firstAttribute="centerX" secondItem="hF1-Vl-giO" secondAttribute="centerX" id="SPK-Ra-6dv"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="transitionButton" destination="O7A-1l-yFx" id="GSd-Hh-gKO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMY-4J-cgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="479" y="1155"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="OWf-vO-sf8">
+            <objects>
+                <viewController id="IHA-qF-rwN" customClass="LoginViewController" customModule="Butler" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TRB-jP-c11"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bwq-h5-KxE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hKD-66-Zrz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HG1-wj-hac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1182" y="1155"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Power" width="32" height="32"/>
+    </resources>
 </document>

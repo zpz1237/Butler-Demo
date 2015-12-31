@@ -15,6 +15,8 @@
 		DB6C3E701C34FEB5000A43AC /* RQShineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6C3E6F1C34FEB5000A43AC /* RQShineLabel.m */; };
 		DB6C3E721C34FF51000A43AC /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C3E711C34FF51000A43AC /* LaunchViewController.swift */; };
 		DB6C3E751C350033000A43AC /* LaunchTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C3E741C350033000A43AC /* LaunchTextModel.swift */; };
+		DB6C796A1C3579D100FC4C10 /* BubbleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C79691C3579D100FC4C10 /* BubbleTransition.swift */; };
+		DB6C796D1C357A5F00FC4C10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C796C1C357A5F00FC4C10 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		DB6C3E6F1C34FEB5000A43AC /* RQShineLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQShineLabel.m; sourceTree = "<group>"; };
 		DB6C3E711C34FF51000A43AC /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		DB6C3E741C350033000A43AC /* LaunchTextModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchTextModel.swift; sourceTree = "<group>"; };
+		DB6C79691C3579D100FC4C10 /* BubbleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransition.swift; sourceTree = "<group>"; };
+		DB6C796C1C357A5F00FC4C10 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 				DB6C3E571C34FE2B000A43AC /* AppDelegate.swift */,
 				DB6C3E6C1C34FE64000A43AC /* Vendor */,
 				DB6C3E731C34FF68000A43AC /* LaunchModule */,
+				DB6C796B1C357A2200FC4C10 /* LoginModule */,
 				DB6C3E591C34FE2B000A43AC /* ViewController.swift */,
 				DB6C3E5B1C34FE2C000A43AC /* Main.storyboard */,
 				DB6C3E5E1C34FE2C000A43AC /* Assets.xcassets */,
@@ -78,6 +83,7 @@
 		DB6C3E6C1C34FE64000A43AC /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				DB6C79681C3579BA00FC4C10 /* BubbleTransition */,
 				DB6C3E6D1C34FE72000A43AC /* RQShineLabel */,
 			);
 			name = Vendor;
@@ -99,6 +105,22 @@
 				DB6C3E741C350033000A43AC /* LaunchTextModel.swift */,
 			);
 			name = LaunchModule;
+			sourceTree = "<group>";
+		};
+		DB6C79681C3579BA00FC4C10 /* BubbleTransition */ = {
+			isa = PBXGroup;
+			children = (
+				DB6C79691C3579D100FC4C10 /* BubbleTransition.swift */,
+			);
+			name = BubbleTransition;
+			sourceTree = "<group>";
+		};
+		DB6C796B1C357A2200FC4C10 /* LoginModule */ = {
+			isa = PBXGroup;
+			children = (
+				DB6C796C1C357A5F00FC4C10 /* LoginViewController.swift */,
+			);
+			name = LoginModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +195,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB6C796D1C357A5F00FC4C10 /* LoginViewController.swift in Sources */,
+				DB6C796A1C3579D100FC4C10 /* BubbleTransition.swift in Sources */,
 				DB6C3E5A1C34FE2B000A43AC /* ViewController.swift in Sources */,
 				DB6C3E581C34FE2B000A43AC /* AppDelegate.swift in Sources */,
 				DB6C3E751C350033000A43AC /* LaunchTextModel.swift in Sources */,

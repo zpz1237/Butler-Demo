@@ -12,6 +12,6 @@ struct LaunchText {
     static var textArrayAtFirst = [
         "   Butler 会为您提供贴心的管家服务，让您以简单的方式过上更精致的生活。",
         "   功能以恰到好处的提醒为核心，将给您最无微不至的关怀。",
-        "   请相信它吧"
+        "请相信它吧"
     ]
 }
