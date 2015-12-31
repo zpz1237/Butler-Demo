@@ -65,10 +65,10 @@
 {
   // Defaults
   _shineDuration   = 2.5;
-  _fadeoutDuration = 1.25;
+  _fadeoutDuration = 1;
   _autoStart       = NO;
   _fadedOut        = YES;
-  self.textColor  = [UIColor blackColor];
+  self.textColor  = [UIColor whiteColor];
   
   _characterAnimationDurations = [NSMutableArray array];
   _characterAnimationDelays    = [NSMutableArray array];

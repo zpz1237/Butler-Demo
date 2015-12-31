@@ -10,18 +10,53 @@ import UIKit
 
 class LaunchViewController: UIViewController {
 
+    var launchShineLabel: RQShineLabel!
+    var index = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        self.view.backgroundColor = UIColor.blackColor()
+        
+        launchShineLabel = RQShineLabel(frame: CGRect(x: 16, y: 16, width: 320 - 32, height: CGRectGetHeight(self.view.bounds) - 16))
+        launchShineLabel.numberOfLines = 0;
+        launchShineLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24)
+        launchShineLabel.text = LaunchText.textArrayAtFirst[0]
+        launchShineLabel.backgroundColor = UIColor.clearColor()
+        launchShineLabel.sizeToFit()
+        launchShineLabel.center = CGPoint(x: self.view.center.x, y: self.view.center.y/5*3.82)
+        self.view.addSubview(launchShineLabel)
     }
     
-
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if self.launchShineLabel.visible {
+            self.launchShineLabel.fadeOutWithCompletion({ () -> Void in
+                self.changeText()
+                self.launchShineLabel.shine()
+            })
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.launchShineLabel.shine()
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    /**
+     获取下一条 LaunchText 中给定的文案
+     */
+    func changeText() {
+        index++
+        if index == LaunchText.textArrayAtFirst.count {
+            self.launchShineLabel.text = ""
+        } else {
+            self.launchShineLabel.text = LaunchText.textArrayAtFirst[index]
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
