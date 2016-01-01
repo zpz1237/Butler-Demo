@@ -12,8 +12,8 @@ struct LoginText {
     static var textArray = [
         "",
         "",
-        "能不能",
-        "请您",
+        "",
+        "能不能请您",
         "把自己",
         "介绍给我呢"
     ]

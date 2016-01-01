@@ -68,7 +68,7 @@
   _fadeoutDuration = 1;
   _autoStart       = NO;
   _fadedOut        = YES;
-  self.textColor  = [UIColor whiteColor];
+  self.textColor  = [UIColor colorWithRed:115/255.0 green:125/255.0 blue:150/255.0 alpha:1];
   
   _characterAnimationDurations = [NSMutableArray array];
   _characterAnimationDelays    = [NSMutableArray array];

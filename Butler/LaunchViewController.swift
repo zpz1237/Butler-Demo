@@ -19,10 +19,11 @@ class LaunchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = CommonModel.mainColor
+        self.view.backgroundColor = UIColor.whiteColor()
         
         transitionButton.alpha = 0
         transitionButton.layer.cornerRadius = transitionButton.bounds.height/2
+        transitionButton.backgroundColor = CommonModel.mainColor
         transitionButton.adjustsImageWhenHighlighted = false
         
         launchShineLabel = RQShineLabel(frame: CGRect(x: 16, y: 16, width: 320 - 32, height: CGRectGetHeight(self.view.bounds) - 16))
