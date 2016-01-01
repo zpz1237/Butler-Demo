@@ -17,6 +17,7 @@
 		DB6C3E751C350033000A43AC /* LaunchTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C3E741C350033000A43AC /* LaunchTextModel.swift */; };
 		DB6C796A1C3579D100FC4C10 /* BubbleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C79691C3579D100FC4C10 /* BubbleTransition.swift */; };
 		DB6C796D1C357A5F00FC4C10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C796C1C357A5F00FC4C10 /* LoginViewController.swift */; };
+		DB6C79701C3639A200FC4C10 /* CommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C796F1C3639A200FC4C10 /* CommonModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DB6C3E741C350033000A43AC /* LaunchTextModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchTextModel.swift; sourceTree = "<group>"; };
 		DB6C79691C3579D100FC4C10 /* BubbleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransition.swift; sourceTree = "<group>"; };
 		DB6C796C1C357A5F00FC4C10 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DB6C796F1C3639A200FC4C10 /* CommonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				DB6C3E691C34FE46000A43AC /* Butler-Bridging-Header.h */,
-				DB6C3E571C34FE2B000A43AC /* AppDelegate.swift */,
+				DB6C796E1C36397900FC4C10 /* Common */,
 				DB6C3E6C1C34FE64000A43AC /* Vendor */,
 				DB6C3E731C34FF68000A43AC /* LaunchModule */,
 				DB6C796B1C357A2200FC4C10 /* LoginModule */,
@@ -121,6 +123,15 @@
 				DB6C796C1C357A5F00FC4C10 /* LoginViewController.swift */,
 			);
 			name = LoginModule;
+			sourceTree = "<group>";
+		};
+		DB6C796E1C36397900FC4C10 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DB6C3E571C34FE2B000A43AC /* AppDelegate.swift */,
+				DB6C796F1C3639A200FC4C10 /* CommonModel.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 				DB6C3E581C34FE2B000A43AC /* AppDelegate.swift in Sources */,
 				DB6C3E751C350033000A43AC /* LaunchTextModel.swift in Sources */,
 				DB6C3E701C34FEB5000A43AC /* RQShineLabel.m in Sources */,
+				DB6C79701C3639A200FC4C10 /* CommonModel.swift in Sources */,
 				DB6C3E721C34FF51000A43AC /* LaunchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

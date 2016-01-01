@@ -19,8 +19,11 @@ class LaunchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = CommonModel.mainColor
+        
         transitionButton.alpha = 0
         transitionButton.layer.cornerRadius = transitionButton.bounds.height/2
+        transitionButton.adjustsImageWhenHighlighted = false
         
         launchShineLabel = RQShineLabel(frame: CGRect(x: 16, y: 16, width: 320 - 32, height: CGRectGetHeight(self.view.bounds) - 16))
         launchShineLabel.numberOfLines = 0;
@@ -35,10 +38,12 @@ class LaunchViewController: UIViewController {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if self.launchShineLabel.visible {
-            self.launchShineLabel.fadeOutWithCompletion({ () -> Void in
-                self.changeText()
-                self.launchShineLabel.shine()
-            })
+            if index != LaunchText.textArrayAtFirst.count - 1 {
+                self.launchShineLabel.fadeOutWithCompletion({ () -> Void in
+                    self.changeText()
+                    self.launchShineLabel.shine()
+                })
+            }
         }
     }
     
@@ -86,5 +91,3 @@ extension LaunchViewController: UIViewControllerTransitioningDelegate {
         return nil
     }
 }
-
-

@@ -9,11 +9,14 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+//        maleContainerView.layer.borderColor = CommonModel.mainColor.CGColor
+//        maleContainerView.layer.borderWidth = 2
+//        femaleContainerView.layer.borderColor = CommonModel.mainColor.CGColor
+//        femaleContainerView.layer.borderWidth = 2
     }
 
     override func didReceiveMemoryWarning() {
