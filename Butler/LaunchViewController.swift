@@ -28,7 +28,7 @@ class LaunchViewController: UIViewController {
         launchShineLabel = RQShineLabel(frame: CGRect(x: 16, y: 16, width: 320 - 32, height: CGRectGetHeight(self.view.bounds) - 16))
         launchShineLabel.numberOfLines = 0;
         launchShineLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24)
-        launchShineLabel.text = LaunchText.textArrayAtFirst[0]
+        launchShineLabel.text = LaunchText.textArrayAtFirst[index]
         launchShineLabel.backgroundColor = UIColor.clearColor()
         launchShineLabel.sizeToFit()
         launchShineLabel.center = CGPoint(x: self.view.center.x, y: self.view.center.y/5*3.82)

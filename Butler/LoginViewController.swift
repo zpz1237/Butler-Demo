@@ -10,29 +10,40 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var enterButton: UIButton!
+    
+    var titleLabel: LTMorphingLabel!
+    var labelChangedTimer: NSTimer!
+    var index = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        maleContainerView.layer.borderColor = CommonModel.mainColor.CGColor
-//        maleContainerView.layer.borderWidth = 2
-//        femaleContainerView.layer.borderColor = CommonModel.mainColor.CGColor
-//        femaleContainerView.layer.borderWidth = 2
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        enterButton.layer.cornerRadius = 3
+        
+        titleLabel = LTMorphingLabel(frame: CGRect(x: 30, y: 30, width: self.view.bounds.width - 60, height: 50))
+        titleLabel.center = CGPoint(x: self.view.center.x, y: self.view.center.y/5*1.97)
+        titleLabel.textAlignment = .Center
+        titleLabel.textColor = CommonModel.mainColor
+        titleLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 24)
+        titleLabel.text = LoginText.textArray[index]
+        titleLabel.morphingEffect = .Evaporate
+        self.view.addSubview(titleLabel)
+        
+        self.labelChangedTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "changeText", userInfo: nil, repeats: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(animated: Bool) {
+        self.labelChangedTimer.fire()
     }
-    */
-
+    
+    func changeText() {
+        index++
+        if index == LoginText.textArray.count {
+            self.titleLabel.text = ""
+            labelChangedTimer.invalidate()
+        } else {
+            self.titleLabel.text = LoginText.textArray[index]
+        }
+    }
 }
