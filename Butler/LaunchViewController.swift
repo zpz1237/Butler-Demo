@@ -13,17 +13,16 @@ class LaunchViewController: UIViewController {
     @IBOutlet weak var transitionButton: UIButton!
     
     var launchShineLabel: RQShineLabel!
-    let transition = BubbleTransition()
     var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = CommonModel.zenGray
         
         transitionButton.alpha = 0
         transitionButton.layer.cornerRadius = transitionButton.bounds.height/2
-        transitionButton.backgroundColor = CommonModel.mainColor
+        transitionButton.backgroundColor = CommonModel.zenGray
         transitionButton.adjustsImageWhenHighlighted = false
         
         launchShineLabel = RQShineLabel(frame: CGRect(x: 16, y: 16, width: 320 - 32, height: CGRectGetHeight(self.view.bounds) - 16))
@@ -53,13 +52,11 @@ class LaunchViewController: UIViewController {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+        return .Default
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let controller = segue.destinationViewController
-        controller.transitioningDelegate = self
-        controller.modalPresentationStyle = .Custom
+        
     }
     
     /**
@@ -77,18 +74,5 @@ class LaunchViewController: UIViewController {
             }
             self.launchShineLabel.text = LaunchText.textArrayAtFirst[index]
         }
-    }
-}
-
-extension LaunchViewController: UIViewControllerTransitioningDelegate {
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .Present
-        transition.startingPoint = transitionButton.center
-        transition.bubbleColor = transitionButton.backgroundColor!
-        return transition
-    }
-    
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil
     }
 }

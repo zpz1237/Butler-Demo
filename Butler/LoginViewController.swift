@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var enterButton: UIButton!
     @IBOutlet weak var accountTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    
     @IBOutlet weak var slidingView: UIView!
     
     var titleLabel: LTMorphingLabel!
@@ -23,21 +22,23 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.slidingView.backgroundColor = CommonModel.mainColor
+        self.view.backgroundColor = CommonModel.zenGray
+        self.slidingView.backgroundColor = CommonModel.zenGray
         
-        accountTF.tintColor = UIColor.whiteColor()
-        accountTF.textColor = UIColor.whiteColor()
-        passwordTF.tintColor = UIColor.whiteColor()
-        passwordTF.textColor = UIColor.whiteColor()
+        accountTF.tintColor = CommonModel.appleBlack
+        accountTF.textColor = CommonModel.appleBlack
+        passwordTF.tintColor = CommonModel.appleBlack
+        passwordTF.textColor = CommonModel.appleBlack
         accountTF.delegate = self
         passwordTF.delegate = self
-        
+
         enterButton.layer.cornerRadius = 3
+        enterButton.backgroundColor = CommonModel.appleBlack
         
         titleLabel = LTMorphingLabel(frame: CGRect(x: 30, y: 30, width: self.view.bounds.width - 60, height: 50))
         titleLabel.center = CGPoint(x: self.view.center.x, y: self.view.center.y/5*1.9776)
         titleLabel.textAlignment = .Center
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = CommonModel.appleBlack
         titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24)
         titleLabel.text = LoginText.textArray[index]
         titleLabel.morphingEffect = .Evaporate
@@ -63,7 +64,41 @@ class LoginViewController: UIViewController {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+        return .Default
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("prepared")
+    }
+    
+    @IBAction func enterButtonAction(sender: UIButton) {
+        guard accountTF.text != "" && passwordTF.text != "" else {
+            self.titleLabel.text = LoginText.invalidInfoA
+            performSelector("clearTextInTitleLabel", withObject: nil, afterDelay: 1.5)
+            return
+        }
+        if accountTF.text == LoginText.tempAccount && passwordTF.text == LoginText.tempPassword {
+            self.titleLabel.text = LoginText.successInfo
+            performSelector("clearTextInTitleLabel", withObject: nil, afterDelay: 1.5)
+            performSelector("invokeSegue", withObject: nil, afterDelay: 2)
+        } else {
+            self.titleLabel.text = LoginText.invalidInfoB
+            performSelector("clearTextInTitleLabel", withObject: nil, afterDelay: 1.5)
+        }
+    }
+    
+    /**
+     触发转场
+     */
+    func invokeSegue() {
+        self.performSegueWithIdentifier("showMain", sender: nil)
+    }
+    
+    /**
+     清空 titleLabel 文字信息
+     */
+    func clearTextInTitleLabel() {
+        self.titleLabel.text = ""
     }
     
     /**

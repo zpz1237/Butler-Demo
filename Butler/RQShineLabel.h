@@ -16,7 +16,7 @@
 @property (assign, nonatomic, readwrite) CFTimeInterval shineDuration;
 
 /**
- *  Fade out duration. Defaults to 2.5.
+ *  Fade out duration. Defaults to 1.
  */
 @property (assign, nonatomic, readwrite) CFTimeInterval fadeoutDuration;
 

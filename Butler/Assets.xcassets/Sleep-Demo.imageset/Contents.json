@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "Sleep-Demo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Artboard 1.png",
       "scale" : "2x"
     },
     {

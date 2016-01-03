@@ -7,15 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB5C30491C38C5BF000848A0 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C30481C38C5BF000848A0 /* MainTableViewCell.swift */; };
+		DB5C304D1C38DE1E000848A0 /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5C304C1C38DE1E000848A0 /* myUILabel.m */; };
+		DB5C304F1C39158E000848A0 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C304E1C39158E000848A0 /* MainModel.swift */; };
+		DB5C305D1C391D13000848A0 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5C30521C391D13000848A0 /* NSMutableArray+SWUtilityButtons.m */; };
+		DB5C305E1C391D13000848A0 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5C30541C391D13000848A0 /* SWCellScrollView.m */; };
+		DB5C305F1C391D13000848A0 /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5C30561C391D13000848A0 /* SWLongPressGestureRecognizer.m */; };
+		DB5C30601C391D13000848A0 /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5C30581C391D13000848A0 /* SWTableViewCell.m */; };
+		DB5C30611C391D13000848A0 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5C305A1C391D13000848A0 /* SWUtilityButtonTapGestureRecognizer.m */; };
+		DB5C30621C391D13000848A0 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5C305C1C391D13000848A0 /* SWUtilityButtonView.m */; };
 		DB6C3E581C34FE2B000A43AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C3E571C34FE2B000A43AC /* AppDelegate.swift */; };
-		DB6C3E5A1C34FE2B000A43AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C3E591C34FE2B000A43AC /* ViewController.swift */; };
 		DB6C3E5D1C34FE2C000A43AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB6C3E5B1C34FE2C000A43AC /* Main.storyboard */; };
 		DB6C3E5F1C34FE2C000A43AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB6C3E5E1C34FE2C000A43AC /* Assets.xcassets */; };
 		DB6C3E621C34FE2C000A43AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB6C3E601C34FE2C000A43AC /* LaunchScreen.storyboard */; };
 		DB6C3E701C34FEB5000A43AC /* RQShineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6C3E6F1C34FEB5000A43AC /* RQShineLabel.m */; };
 		DB6C3E721C34FF51000A43AC /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C3E711C34FF51000A43AC /* LaunchViewController.swift */; };
 		DB6C3E751C350033000A43AC /* LaunchTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C3E741C350033000A43AC /* LaunchTextModel.swift */; };
-		DB6C796A1C3579D100FC4C10 /* BubbleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C79691C3579D100FC4C10 /* BubbleTransition.swift */; };
 		DB6C796D1C357A5F00FC4C10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C796C1C357A5F00FC4C10 /* LoginViewController.swift */; };
 		DB6C79701C3639A200FC4C10 /* CommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C796F1C3639A200FC4C10 /* CommonModel.swift */; };
 		DB6C79851C36733500FC4C10 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB6C79721C36733500FC4C10 /* Info.plist */; };
@@ -36,12 +43,28 @@
 		DB6C79941C36733500FC4C10 /* Smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = DB6C79831C36733500FC4C10 /* Smoke.png */; };
 		DB6C79951C36733500FC4C10 /* Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = DB6C79841C36733500FC4C10 /* Sparkle.png */; };
 		DB6C79971C36746700FC4C10 /* LoginTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C79961C36746700FC4C10 /* LoginTextModel.swift */; };
+		DBFE69A91C37B5F5009717A7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFE69A81C37B5F5009717A7 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB5C30481C38C5BF000848A0 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		DB5C304B1C38DE1E000848A0 /* myUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myUILabel.h; sourceTree = "<group>"; };
+		DB5C304C1C38DE1E000848A0 /* myUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myUILabel.m; sourceTree = "<group>"; };
+		DB5C304E1C39158E000848A0 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		DB5C30511C391D13000848A0 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
+		DB5C30521C391D13000848A0 /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
+		DB5C30531C391D13000848A0 /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = "<group>"; };
+		DB5C30541C391D13000848A0 /* SWCellScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCellScrollView.m; sourceTree = "<group>"; };
+		DB5C30551C391D13000848A0 /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		DB5C30561C391D13000848A0 /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		DB5C30571C391D13000848A0 /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewCell.h; sourceTree = "<group>"; };
+		DB5C30581C391D13000848A0 /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewCell.m; sourceTree = "<group>"; };
+		DB5C30591C391D13000848A0 /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonTapGestureRecognizer.h; sourceTree = "<group>"; };
+		DB5C305A1C391D13000848A0 /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
+		DB5C305B1C391D13000848A0 /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
+		DB5C305C1C391D13000848A0 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		DB6C3E541C34FE2B000A43AC /* Butler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Butler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6C3E571C34FE2B000A43AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DB6C3E591C34FE2B000A43AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DB6C3E5C1C34FE2C000A43AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DB6C3E5E1C34FE2C000A43AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB6C3E611C34FE2C000A43AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,7 +74,6 @@
 		DB6C3E6F1C34FEB5000A43AC /* RQShineLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RQShineLabel.m; sourceTree = "<group>"; };
 		DB6C3E711C34FF51000A43AC /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		DB6C3E741C350033000A43AC /* LaunchTextModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchTextModel.swift; sourceTree = "<group>"; };
-		DB6C79691C3579D100FC4C10 /* BubbleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTransition.swift; sourceTree = "<group>"; };
 		DB6C796C1C357A5F00FC4C10 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DB6C796F1C3639A200FC4C10 /* CommonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonModel.swift; sourceTree = "<group>"; };
 		DB6C79721C36733500FC4C10 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +95,7 @@
 		DB6C79831C36733500FC4C10 /* Smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smoke.png; sourceTree = "<group>"; };
 		DB6C79841C36733500FC4C10 /* Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparkle.png; sourceTree = "<group>"; };
 		DB6C79961C36746700FC4C10 /* LoginTextModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextModel.swift; sourceTree = "<group>"; };
+		DBFE69A81C37B5F5009717A7 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +109,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB5C304A1C38DE0A000848A0 /* myUILabel */ = {
+			isa = PBXGroup;
+			children = (
+				DB5C304B1C38DE1E000848A0 /* myUILabel.h */,
+				DB5C304C1C38DE1E000848A0 /* myUILabel.m */,
+			);
+			name = myUILabel;
+			sourceTree = "<group>";
+		};
+		DB5C30501C391D13000848A0 /* SWTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DB5C30511C391D13000848A0 /* NSMutableArray+SWUtilityButtons.h */,
+				DB5C30521C391D13000848A0 /* NSMutableArray+SWUtilityButtons.m */,
+				DB5C30531C391D13000848A0 /* SWCellScrollView.h */,
+				DB5C30541C391D13000848A0 /* SWCellScrollView.m */,
+				DB5C30551C391D13000848A0 /* SWLongPressGestureRecognizer.h */,
+				DB5C30561C391D13000848A0 /* SWLongPressGestureRecognizer.m */,
+				DB5C30571C391D13000848A0 /* SWTableViewCell.h */,
+				DB5C30581C391D13000848A0 /* SWTableViewCell.m */,
+				DB5C30591C391D13000848A0 /* SWUtilityButtonTapGestureRecognizer.h */,
+				DB5C305A1C391D13000848A0 /* SWUtilityButtonTapGestureRecognizer.m */,
+				DB5C305B1C391D13000848A0 /* SWUtilityButtonView.h */,
+				DB5C305C1C391D13000848A0 /* SWUtilityButtonView.m */,
+			);
+			path = SWTableViewCell;
+			sourceTree = "<group>";
+		};
 		DB6C3E4B1C34FE2B000A43AC = {
 			isa = PBXGroup;
 			children = (
@@ -110,7 +161,7 @@
 				DB6C3E6C1C34FE64000A43AC /* Vendor */,
 				DB6C3E731C34FF68000A43AC /* LaunchModule */,
 				DB6C796B1C357A2200FC4C10 /* LoginModule */,
-				DB6C3E591C34FE2B000A43AC /* ViewController.swift */,
+				DBFE69AA1C37B60F009717A7 /* MainModule */,
 				DB6C3E5B1C34FE2C000A43AC /* Main.storyboard */,
 				DB6C3E5E1C34FE2C000A43AC /* Assets.xcassets */,
 				DB6C3E601C34FE2C000A43AC /* LaunchScreen.storyboard */,
@@ -122,8 +173,9 @@
 		DB6C3E6C1C34FE64000A43AC /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				DB5C30501C391D13000848A0 /* SWTableViewCell */,
+				DB5C304A1C38DE0A000848A0 /* myUILabel */,
 				DB6C79711C36733500FC4C10 /* LTMorphingLabel */,
-				DB6C79681C3579BA00FC4C10 /* BubbleTransition */,
 				DB6C3E6D1C34FE72000A43AC /* RQShineLabel */,
 			);
 			name = Vendor;
@@ -145,14 +197,6 @@
 				DB6C3E741C350033000A43AC /* LaunchTextModel.swift */,
 			);
 			name = LaunchModule;
-			sourceTree = "<group>";
-		};
-		DB6C79681C3579BA00FC4C10 /* BubbleTransition */ = {
-			isa = PBXGroup;
-			children = (
-				DB6C79691C3579D100FC4C10 /* BubbleTransition.swift */,
-			);
-			name = BubbleTransition;
 			sourceTree = "<group>";
 		};
 		DB6C796B1C357A2200FC4C10 /* LoginModule */ = {
@@ -204,6 +248,16 @@
 				DB6C79841C36733500FC4C10 /* Sparkle.png */,
 			);
 			path = Particles;
+			sourceTree = "<group>";
+		};
+		DBFE69AA1C37B60F009717A7 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				DBFE69A81C37B5F5009717A7 /* MainViewController.swift */,
+				DB5C30481C38C5BF000848A0 /* MainTableViewCell.swift */,
+				DB5C304E1C39158E000848A0 /* MainModel.swift */,
+			);
+			name = MainModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,24 +338,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB6C796D1C357A5F00FC4C10 /* LoginViewController.swift in Sources */,
+				DBFE69A91C37B5F5009717A7 /* MainViewController.swift in Sources */,
+				DB5C30601C391D13000848A0 /* SWTableViewCell.m in Sources */,
+				DB5C305D1C391D13000848A0 /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				DB5C305F1C391D13000848A0 /* SWLongPressGestureRecognizer.m in Sources */,
 				DB6C79901C36733500FC4C10 /* LTMorphingLabel.swift in Sources */,
-				DB6C796A1C3579D100FC4C10 /* BubbleTransition.swift in Sources */,
 				DB6C798E1C36733500FC4C10 /* LTMorphingLabel+Pixelate.swift in Sources */,
+				DB5C30621C391D13000848A0 /* SWUtilityButtonView.m in Sources */,
 				DB6C79911C36733500FC4C10 /* NSString+LTMorphingLabel.swift in Sources */,
 				DB6C79891C36733500FC4C10 /* LTMorphingEffect.swift in Sources */,
+				DB5C304D1C38DE1E000848A0 /* myUILabel.m in Sources */,
 				DB6C798D1C36733500FC4C10 /* LTMorphingLabel+Fall.swift in Sources */,
-				DB6C3E5A1C34FE2B000A43AC /* ViewController.swift in Sources */,
 				DB6C3E581C34FE2B000A43AC /* AppDelegate.swift in Sources */,
 				DB6C798A1C36733500FC4C10 /* LTMorphingLabel+Anvil.swift in Sources */,
 				DB6C3E751C350033000A43AC /* LaunchTextModel.swift in Sources */,
+				DB5C30491C38C5BF000848A0 /* MainTableViewCell.swift in Sources */,
 				DB6C798F1C36733500FC4C10 /* LTMorphingLabel+Sparkle.swift in Sources */,
+				DB5C304F1C39158E000848A0 /* MainModel.swift in Sources */,
 				DB6C3E701C34FEB5000A43AC /* RQShineLabel.m in Sources */,
 				DB6C79871C36733500FC4C10 /* LTEasing.swift in Sources */,
 				DB6C798B1C36733500FC4C10 /* LTMorphingLabel+Burn.swift in Sources */,
 				DB6C79701C3639A200FC4C10 /* CommonModel.swift in Sources */,
 				DB6C3E721C34FF51000A43AC /* LaunchViewController.swift in Sources */,
+				DB5C30611C391D13000848A0 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				DB6C79971C36746700FC4C10 /* LoginTextModel.swift in Sources */,
 				DB6C79861C36733500FC4C10 /* LTCharacterLimbo.swift in Sources */,
+				DB5C305E1C391D13000848A0 /* SWCellScrollView.m in Sources */,
 				DB6C798C1C36733500FC4C10 /* LTMorphingLabel+Evaporate.swift in Sources */,
 				DB6C79881C36733500FC4C10 /* LTEmitterView.swift in Sources */,
 			);
