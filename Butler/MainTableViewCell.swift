@@ -18,6 +18,7 @@ class MainTableViewCell: SWTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         notificationContentLabel.verticalAlignment = VerticalAlignmentTop
+        notificationImageView.contentMode = .ScaleAspectFill
         // Initialization code
     }
 

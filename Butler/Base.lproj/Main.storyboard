@@ -222,7 +222,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sleep-Demo" translatesAutoresizingMaskIntoConstraints="NO" id="ro0-Xo-Je7">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sleep" translatesAutoresizingMaskIntoConstraints="NO" id="ro0-Xo-Je7">
                                                     <rect key="frame" x="23" y="29" width="55" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="55" id="YkD-GX-Tix"/>
@@ -238,8 +238,8 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRl-FZ-BdO">
-                                                    <rect key="frame" x="93" y="38.5" width="80" height="35"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="23:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRl-FZ-BdO">
+                                                    <rect key="frame" x="93" y="38" width="80" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="Dj5-tr-hwD"/>
                                                         <constraint firstAttribute="height" constant="35" id="qTn-ry-ZcR"/>
@@ -301,6 +301,6 @@
     <resources>
         <image name="Bow-Tie" width="580" height="255"/>
         <image name="Fire" width="32" height="32"/>
-        <image name="Sleep-Demo" width="128" height="128"/>
+        <image name="Sleep" width="128" height="128"/>
     </resources>
 </document>

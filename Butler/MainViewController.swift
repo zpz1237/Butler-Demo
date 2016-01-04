@@ -65,7 +65,15 @@ class MainViewController: UIViewController {
     func changeText() {
         index++
         if index == MainText.textArrayAtFirst.count {
-            self.titleLabel.text = ""
+            self.titleLabel.text = "愿意为您服务"
+            MainText.completeSampleData()
+            self.tableView.reloadData()
+            self.tableView.beginUpdates()
+            self.tableView.insertSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.Bottom)
+//            self.tableView.insertSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.Bottom)
+//            self.tableView.insertSections(NSIndexSet(index: 3), withRowAnimation: UITableViewRowAnimation.Bottom)
+//            self.tableView.insertSections(NSIndexSet(index: 4), withRowAnimation: UITableViewRowAnimation.Bottom)
+            self.tableView.endUpdates()
             labelChangedTimer.invalidate()
         } else {
             self.titleLabel.text = MainText.textArrayAtFirst[index]
