@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D9c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tof-8g-KfP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D9c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RaU-sn-27r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -30,7 +30,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="IHA-qF-rwN" kind="presentation" modalTransitionStyle="crossDissolve" id="phi-Ow-TGP"/>
+                                    <segue destination="IHA-qF-rwN" kind="presentation" modalTransitionStyle="coverVertical" id="phi-Ow-TGP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -185,7 +185,7 @@
                         <outlet property="enterButton" destination="Tqw-rn-Zq1" id="sVd-G0-yOw"/>
                         <outlet property="passwordTF" destination="WkV-O3-TJc" id="6Rs-ZM-gq7"/>
                         <outlet property="slidingView" destination="KcS-Uh-5UC" id="F9R-23-BKg"/>
-                        <segue destination="Tof-8g-KfP" kind="presentation" identifier="showMain" modalTransitionStyle="crossDissolve" id="TjH-Ql-AcS"/>
+                        <segue destination="Tof-8g-KfP" kind="presentation" identifier="showMain" modalTransitionStyle="flipHorizontal" id="TjH-Ql-AcS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HG1-wj-hac" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,6 +301,6 @@
     <resources>
         <image name="Bow-Tie" width="580" height="255"/>
         <image name="Fire" width="32" height="32"/>
-        <image name="Sleep" width="128" height="128"/>
+        <image name="Sleep" width="120" height="120"/>
     </resources>
 </document>

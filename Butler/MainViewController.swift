@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
             self.tableView.alpha = 1
             self.tableView.transform = CGAffineTransformIdentity
             }) { (finished) -> Void in
-                
+
         }
     }
     
@@ -66,21 +66,33 @@ class MainViewController: UIViewController {
         index++
         if index == MainText.textArrayAtFirst.count {
             self.titleLabel.text = "愿意为您服务"
-            MainText.completeSampleData()
-            self.tableView.reloadData()
-            self.tableView.beginUpdates()
-            self.tableView.insertSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.Bottom)
-//            self.tableView.insertSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.Bottom)
-//            self.tableView.insertSections(NSIndexSet(index: 3), withRowAnimation: UITableViewRowAnimation.Bottom)
-//            self.tableView.insertSections(NSIndexSet(index: 4), withRowAnimation: UITableViewRowAnimation.Bottom)
-            self.tableView.endUpdates()
+            performSelector("clearTextInTitleLabel", withObject: nil, afterDelay: 1.5)
+            performSelector("moveTableViewUpward", withObject: nil, afterDelay: 2)
             labelChangedTimer.invalidate()
         } else {
             self.titleLabel.text = MainText.textArrayAtFirst[index]
-            if index == 2 {
+            if index == 3 {
                 (self.tableView.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0)) as! MainTableViewCell).showRightUtilityButtonsAnimated(true)
                 self.performSelector("hideUtilityButtons", withObject: nil, afterDelay: 2.25)
             }
+        }
+    }
+    
+    /**
+     清空 titleLabel 文字信息
+     */
+    func clearTextInTitleLabel() {
+        self.titleLabel.text = ""
+    }
+    
+    /**
+     使 tableView 上移遮住 titleLabel
+     */
+    func moveTableViewUpward() {
+        UIView.animateWithDuration(0.85, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: { () -> Void in
+            self.tableView.transform = CGAffineTransformMakeTranslation(0, -53)
+            }) { (finished) -> Void in
+                
         }
     }
 }
@@ -122,8 +134,7 @@ extension MainViewController: SWTableViewCellDelegate {
     func rightButtons() -> NSMutableArray {
         let rightUtilityButtons: NSMutableArray = []
         rightUtilityButtons.sw_addUtilityButtonWithColor(CommonModel.zenBlue, title: "好的")
-        rightUtilityButtons.sw_addUtilityButtonWithColor(CommonModel.tieBlack, title: "稍等")
-        rightUtilityButtons.sw_addUtilityButtonWithColor(UIColor.lightGrayColor(), title: "忽略")
+        rightUtilityButtons.sw_addUtilityButtonWithColor(CommonModel.tieBlack, title: "稍后")
         return rightUtilityButtons
     }
     
