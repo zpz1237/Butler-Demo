@@ -43,6 +43,7 @@
 		DB6C79941C36733500FC4C10 /* Smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = DB6C79831C36733500FC4C10 /* Smoke.png */; };
 		DB6C79951C36733500FC4C10 /* Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = DB6C79841C36733500FC4C10 /* Sparkle.png */; };
 		DB6C79971C36746700FC4C10 /* LoginTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C79961C36746700FC4C10 /* LoginTextModel.swift */; };
+		DB96F9EE1C3E39960014D10D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB96F9ED1C3E39960014D10D /* DetailViewController.swift */; };
 		DBFE69A91C37B5F5009717A7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFE69A81C37B5F5009717A7 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		DB6C79831C36733500FC4C10 /* Smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smoke.png; sourceTree = "<group>"; };
 		DB6C79841C36733500FC4C10 /* Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparkle.png; sourceTree = "<group>"; };
 		DB6C79961C36746700FC4C10 /* LoginTextModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextModel.swift; sourceTree = "<group>"; };
+		DB96F9ED1C3E39960014D10D /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DBFE69A81C37B5F5009717A7 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -256,6 +258,7 @@
 				DBFE69A81C37B5F5009717A7 /* MainViewController.swift */,
 				DB5C30481C38C5BF000848A0 /* MainTableViewCell.swift */,
 				DB5C304E1C39158E000848A0 /* MainModel.swift */,
+				DB96F9ED1C3E39960014D10D /* DetailViewController.swift */,
 			);
 			name = MainModule;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				DB6C79971C36746700FC4C10 /* LoginTextModel.swift in Sources */,
 				DB6C79861C36733500FC4C10 /* LTCharacterLimbo.swift in Sources */,
 				DB5C305E1C391D13000848A0 /* SWCellScrollView.m in Sources */,
+				DB96F9EE1C3E39960014D10D /* DetailViewController.swift in Sources */,
 				DB6C798C1C36733500FC4C10 /* LTMorphingLabel+Evaporate.swift in Sources */,
 				DB6C79881C36733500FC4C10 /* LTEmitterView.swift in Sources */,
 			);

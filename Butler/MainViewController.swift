@@ -39,6 +39,8 @@ class MainViewController: UIViewController {
         
         self.view.backgroundColor = CommonModel.zenGray
         
+        scheduleLocalNotification()
+        
         self.labelChangedTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "changeText", userInfo: nil, repeats: true)
     }
     
@@ -49,6 +51,25 @@ class MainViewController: UIViewController {
             self.tableView.transform = CGAffineTransformIdentity
             }) { (finished) -> Void in
 
+        }
+    }
+    
+    /**
+     清除之前的通知，并根据此时 sampleData 的数据设置新通知
+     */
+    func scheduleLocalNotification() {
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
+        let notificationFromSampleData = [
+            MainText.transformDataToNotification(MainText.sampleData[0]),
+            MainText.transformDataToNotification(MainText.sampleData[1]),
+            MainText.transformDataToNotification(MainText.sampleData[2]),
+            MainText.transformDataToNotification(MainText.sampleData[3]),
+            MainText.transformDataToNotification(MainText.sampleData[4])
+        ]
+        
+        for i in 0 ..< notificationFromSampleData.count {
+            UIApplication.sharedApplication().scheduleLocalNotification(notificationFromSampleData[i])
         }
     }
     
@@ -135,6 +156,7 @@ extension MainViewController: SWTableViewCellDelegate {
         let rightUtilityButtons: NSMutableArray = []
         rightUtilityButtons.sw_addUtilityButtonWithColor(CommonModel.zenBlue, title: "好的")
         rightUtilityButtons.sw_addUtilityButtonWithColor(CommonModel.tieBlack, title: "稍后")
+        rightUtilityButtons.sw_addUtilityButtonWithColor(UIColor.lightGrayColor(), title: "忽略")
         return rightUtilityButtons
     }
     

@@ -22,7 +22,8 @@ struct MainText {
         "您会收到这样的通知",
         "左划回应",
         "右滑返回",
-        "可处理的通知，都在这"
+        "可处理的通知，都在这",
+        "点击可配置"
     ]
     
     static var sampleData = [
@@ -33,15 +34,7 @@ struct MainText {
         ContentModel(type: "睡眠提醒", image: "Sleep", time: "23:00", content: "    如果您现在休息的话，我将于八小时后叫醒您。")
     ]
     
-    static var notificationFromSampleData = [
-        MainText.transformDataToNotification(MainText.sampleData[0]),
-        MainText.transformDataToNotification(MainText.sampleData[1]),
-        MainText.transformDataToNotification(MainText.sampleData[2]),
-        MainText.transformDataToNotification(MainText.sampleData[3]),
-        MainText.transformDataToNotification(MainText.sampleData[4])
-    ]
-    
-    private static func transformDataToNotification(contentModel: ContentModel) -> UILocalNotification {
+    static func transformDataToNotification(contentModel: ContentModel) -> UILocalNotification {
         func getTimeFromModel(time: String) -> (hour: Int, minute: Int) {
             let hour = Int(NSString(string: time).substringToIndex(2))
             let minute = Int(NSString(string: time).substringFromIndex(3))
