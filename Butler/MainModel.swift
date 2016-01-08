@@ -74,4 +74,23 @@ struct MainText {
         return notification
     }
     
+    /**
+     清除之前的通知，并根据此时 sampleData 的数据设置新通知
+     */
+    static func scheduleLocalNotification() {
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
+        let notificationFromSampleData = [
+            MainText.transformDataToNotification(MainText.sampleData[0]),
+            MainText.transformDataToNotification(MainText.sampleData[1]),
+            MainText.transformDataToNotification(MainText.sampleData[2]),
+            MainText.transformDataToNotification(MainText.sampleData[3]),
+            MainText.transformDataToNotification(MainText.sampleData[4])
+        ]
+        
+        for i in 0 ..< notificationFromSampleData.count {
+            UIApplication.sharedApplication().scheduleLocalNotification(notificationFromSampleData[i])
+        }
+    }
+    
 }

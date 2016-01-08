@@ -38,38 +38,36 @@ class MainViewController: UIViewController {
         tableView.alpha = 0
         
         self.view.backgroundColor = CommonModel.zenGray
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        scheduleLocalNotification()
+        MainText.scheduleLocalNotification()
         
         self.labelChangedTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "changeText", userInfo: nil, repeats: true)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         self.labelChangedTimer.fire()
+        self.tableView.userInteractionEnabled = false
         UIView.animateWithDuration(1.85, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: { () -> Void in
             self.tableView.alpha = 1
             self.tableView.transform = CGAffineTransformIdentity
             }) { (finished) -> Void in
-
+                
         }
     }
     
-    /**
-     清除之前的通知，并根据此时 sampleData 的数据设置新通知
-     */
-    func scheduleLocalNotification() {
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+    override func viewDidAppear(animated: Bool) {
         
-        let notificationFromSampleData = [
-            MainText.transformDataToNotification(MainText.sampleData[0]),
-            MainText.transformDataToNotification(MainText.sampleData[1]),
-            MainText.transformDataToNotification(MainText.sampleData[2]),
-            MainText.transformDataToNotification(MainText.sampleData[3]),
-            MainText.transformDataToNotification(MainText.sampleData[4])
-        ]
-        
-        for i in 0 ..< notificationFromSampleData.count {
-            UIApplication.sharedApplication().scheduleLocalNotification(notificationFromSampleData[i])
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetail" {
+            if let nav = segue.destinationViewController as? UINavigationController {
+                if let vc = nav.topViewController as? DetailViewController {
+                    vc.titleLabel.text = MainText.sampleData[self.tableView.indexPathForSelectedRow!.section].type
+                    vc.date = MainText.transformDataToNotification(MainText.sampleData[self.tableView.indexPathForSelectedRow!.section]).fireDate!
+                    vc.currentIndex = self.tableView.indexPathForSelectedRow!.section
+                    vc.delegate = self
+                }
+            }
         }
     }
     
@@ -89,6 +87,7 @@ class MainViewController: UIViewController {
             self.titleLabel.text = "愿意为您服务"
             performSelector("clearTextInTitleLabel", withObject: nil, afterDelay: 1.5)
             performSelector("moveTableViewUpward", withObject: nil, afterDelay: 2)
+            self.tableView.userInteractionEnabled = true
             labelChangedTimer.invalidate()
         } else {
             self.titleLabel.text = MainText.textArrayAtFirst[index]
@@ -132,6 +131,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("showDetail", sender: nil)
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -171,5 +174,36 @@ extension MainViewController: SWTableViewCellDelegate {
         default:
             ()
         }
+    }
+}
+
+extension MainViewController: DetailViewControllerDelegate {
+    /**
+     根据选中的时间设置 sampleDate 以及更新 view 和 localNotification
+     
+     - parameter modifiedDate: 设置页面所选中的时间
+     - parameter selectedSection: 之前选中的 Section
+     */
+    func updateData(modifiedDate: NSDate, selectedSection: Int) {
+        let calendar = NSCalendar.currentCalendar()
+        let comp = calendar.components([.Hour, .Minute], fromDate: modifiedDate)
+        
+        var hour = NSString(string: String(comp.hour))
+        var minute = NSString(string: String(comp.minute))
+        var timeString = ""
+        
+        if minute.length == 1 {
+            minute = (minute as String) + "0"
+        }
+        if hour.length == 1 {
+            hour = "0" + (hour as String)
+        }
+        
+        timeString = "\(hour)" + ":" + "\(minute)"
+        
+        MainText.sampleData[selectedSection].time = timeString
+
+        self.tableView.reloadSections(NSIndexSet(index: selectedSection), withRowAnimation: .Automatic)
+        MainText.scheduleLocalNotification()
     }
 }
