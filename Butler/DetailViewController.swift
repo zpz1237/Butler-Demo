@@ -32,12 +32,8 @@ class DetailViewController: UIViewController {
         self.datePicker.locale = NSLocale(localeIdentifier: "zh_CN")
         self.datePicker.backgroundColor = UIColor.whiteColor()
         
-//        cancelButton.backgroundColor = UIColor.lightGrayColor()
-//        doneButton.backgroundColor = CommonModel.zenBlue
         cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         doneButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-//        cancelButton.layer.cornerRadius = 3
-//        doneButton.layer.cornerRadius = 3
         
         doneCircle.image = UIImage(named: "Circle")?.imageWithRenderingMode(.AlwaysTemplate)
         doneCircle.tintColor = CommonModel.zenBlue

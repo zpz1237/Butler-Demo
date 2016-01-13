@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D13b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="itE-4n-n8W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D13b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RaU-sn-27r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -11,7 +11,7 @@
         <!--Launch View Controller-->
         <scene sceneID="Qbd-ud-UMr">
             <objects>
-                <viewController id="RaU-sn-27r" customClass="LaunchViewController" customModule="Butler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LaunchVC" id="RaU-sn-27r" customClass="LaunchViewController" customModule="Butler" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KlS-A7-Znz"/>
                         <viewControllerLayoutGuide type="bottom" id="SPA-At-9Uh"/>
@@ -30,7 +30,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="IHA-qF-rwN" kind="presentation" modalTransitionStyle="coverVertical" id="phi-Ow-TGP"/>
+                                    <segue destination="itE-4n-n8W" kind="presentation" modalTransitionStyle="flipHorizontal" id="CYK-wS-jQe"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -45,7 +45,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMY-4J-cgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="479" y="1155"/>
+            <point key="canvasLocation" x="1211" y="1155"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="OWf-vO-sf8">
@@ -185,12 +185,11 @@
                         <outlet property="enterButton" destination="Tqw-rn-Zq1" id="sVd-G0-yOw"/>
                         <outlet property="passwordTF" destination="WkV-O3-TJc" id="6Rs-ZM-gq7"/>
                         <outlet property="slidingView" destination="KcS-Uh-5UC" id="F9R-23-BKg"/>
-                        <segue destination="itE-4n-n8W" kind="presentation" identifier="showMain" modalTransitionStyle="flipHorizontal" id="TjH-Ql-AcS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HG1-wj-hac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1201" y="1155"/>
+            <point key="canvasLocation" x="1211" y="380"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="Z8W-D3-fd4">
@@ -212,7 +211,7 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pNQ-yB-6kv">
-                                <rect key="frame" x="0.0" y="140" width="600" height="460"/>
+                                <rect key="frame" x="0.0" y="140" width="600" height="513"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="mainCell" rowHeight="100" id="Ybx-07-I5n" customClass="MainTableViewCell" customModule="Butler" customModuleProvider="target">
@@ -284,7 +283,7 @@
                             <constraint firstItem="Pcc-yA-W0j" firstAttribute="top" secondItem="we6-zj-m2B" secondAttribute="bottom" constant="-29" id="V6o-rx-kfb"/>
                             <constraint firstItem="pNQ-yB-6kv" firstAttribute="top" secondItem="Pcc-yA-W0j" secondAttribute="bottom" constant="65" id="W8S-9t-Zyg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pNQ-yB-6kv" secondAttribute="trailing" constant="-20" id="XwZ-2o-iI1"/>
-                            <constraint firstItem="4oV-zN-4es" firstAttribute="top" secondItem="pNQ-yB-6kv" secondAttribute="bottom" id="Ym7-qM-p9p"/>
+                            <constraint firstItem="4oV-zN-4es" firstAttribute="top" secondItem="pNQ-yB-6kv" secondAttribute="bottom" constant="-53" id="Ym7-qM-p9p"/>
                             <constraint firstItem="pNQ-yB-6kv" firstAttribute="leading" secondItem="JF1-bt-UJs" secondAttribute="leadingMargin" constant="-20" id="pIe-Pt-Snk"/>
                         </constraints>
                     </view>
@@ -449,7 +448,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Aub-fs-y2t">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="itE-4n-n8W" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainVCNV" automaticallyAdjustsScrollViewInsets="NO" id="itE-4n-n8W" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WYh-lU-8rq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

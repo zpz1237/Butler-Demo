@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Butler/AppDelegate.swift"
-            timestampString = "473761934.378542"
+            filePath = "Butler/LoginViewController.swift"
+            timestampString = "474365738.30684"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "application(_:handleActionWithIdentifier:forLocalNotification:completionHandler:)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "invokeSegue()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

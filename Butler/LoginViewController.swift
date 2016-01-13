@@ -91,6 +91,7 @@ class LoginViewController: UIViewController {
      触发转场
      */
     func invokeSegue() {
+        //已删除，需重新添加
         self.performSegueWithIdentifier("showMain", sender: nil)
     }
     

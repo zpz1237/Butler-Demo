@@ -20,6 +20,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        titleImageView.image = scaleToSize(UIImage(named: "Bow-Tie")!, size: titleImageView.frame.size)
+        
         titleLabel = LTMorphingLabel(frame: CGRect(x: 30, y: 30, width: self.view.bounds.width - 60, height: 50))
         titleLabel.center = CGPoint(x: self.view.center.x, y: self.titleImageView.center.y + 53)
         titleLabel.textAlignment = .Center
@@ -34,8 +36,6 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .None
         tableView.rowHeight = 100
-        tableView.transform = CGAffineTransformMakeTranslation(0, self.view.bounds.height)
-        tableView.alpha = 0
         
         self.view.backgroundColor = CommonModel.zenGray
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -43,15 +43,30 @@ class MainViewController: UIViewController {
         
         MainText.scheduleLocalNotification()
         
-        self.labelChangedTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "changeText", userInfo: nil, repeats: true)
-        self.labelChangedTimer.fire()
-        self.tableView.userInteractionEnabled = false
-        UIView.animateWithDuration(1.85, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: { () -> Void in
-            self.tableView.alpha = 1
-            self.tableView.transform = CGAffineTransformIdentity
-            }) { (finished) -> Void in
-                
+        tableView.transform = CGAffineTransformMakeTranslation(0, self.view.bounds.height)
+        tableView.alpha = 0
+        tableView.userInteractionEnabled = false
+        
+        if (NSUserDefaults.standardUserDefaults().objectForKey(CommonModel.firstLaunchKey) as! Bool) {
+            self.labelChangedTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "changeText", userInfo: nil, repeats: true)
+            self.labelChangedTimer.fire()
+            
+            UIView.animateWithDuration(1.85, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: { () -> Void in
+                self.tableView.alpha = 1
+                self.tableView.transform = CGAffineTransformIdentity
+                }) { (finished) -> Void in
+                    NSUserDefaults.standardUserDefaults().setObject(false, forKey: CommonModel.firstLaunchKey)
+            }
+        } else {
+            clearTextInTitleLabel()
+            UIView.animateWithDuration(1.25, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: { () -> Void in
+                self.tableView.alpha = 1
+                self.tableView.transform = CGAffineTransformMakeTranslation(0, -53)
+                }) { (finished) -> Void in
+                    self.tableView.userInteractionEnabled = true
+            }
         }
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -69,6 +84,22 @@ class MainViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    /**
+     重绘图片以消除锯齿
+     
+     - parameter image: 需重绘的图片
+     - parameter size:  放置位置的大小
+     
+     - returns: 重绘后的图片
+     */
+    func scaleToSize(image: UIImage, size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        image.drawInRect(CGRect(origin: CGPointZero, size: size))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return scaledImage
     }
     
     /**
@@ -112,8 +143,37 @@ class MainViewController: UIViewController {
         UIView.animateWithDuration(0.85, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: { () -> Void in
             self.tableView.transform = CGAffineTransformMakeTranslation(0, -53)
             }) { (finished) -> Void in
-                
         }
+    }
+    
+    /**
+     将选中的提醒时间推迟半个小时
+     
+     - parameter selectedSection: 选中的 Section
+     */
+    func delayTheNotification(selectedSection: Int) {
+        let oldTime = MainText.sampleData[selectedSection].time
+        var hour = Int(NSString(string: oldTime).substringToIndex(2))
+        var minuteString = NSString(string: oldTime).substringFromIndex(3)
+        var newHourString: NSString = ""
+        if minuteString == "00" {
+            minuteString = "30"
+        } else if minuteString == "30" {
+            minuteString = "00"
+            hour! += 1
+        }
+        
+        newHourString = NSString(string: String(hour!))
+        if newHourString.length == 1 {
+            newHourString = "0" + (newHourString as String)
+        }
+        
+        let newTime = (newHourString as String) + ":" + minuteString
+        print(newTime)
+        
+        MainText.sampleData[selectedSection].time = newTime
+        self.tableView.reloadSections(NSIndexSet(index: selectedSection), withRowAnimation: .Right)
+        MainText.scheduleLocalNotification()
     }
 }
 
@@ -168,7 +228,7 @@ extension MainViewController: SWTableViewCellDelegate {
         case 0:
             print("ok")
         case 1:
-            print("later")
+            delayTheNotification((self.tableView.indexPathForCell(cell)?.section)!)
         case 2:
             print("ignore")
         default:
