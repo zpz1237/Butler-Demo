@@ -112,12 +112,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             detailVC.titleLabel.text = notification.alertTitle
             detailVC.date = notification.fireDate
             detailVC.currentIndex = notification.userInfo!["index"] as! Int
-            detailVC.delegate = window!.rootViewController as! MainViewController
+            
+            let mainVCNV = window!.rootViewController as! UINavigationController
+            detailVC.delegate = mainVCNV.topViewController as! MainViewController
             
             window?.rootViewController?.presentViewController(detailVCNV, animated: true, completion: nil)
         } else {
             print("get the WRONG identifier")
         }
+        
         completionHandler()
     }
     
