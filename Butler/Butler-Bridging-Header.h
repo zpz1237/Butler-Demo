@@ -3,5 +3,5 @@
 //
 
 #import "RQShineLabel.h"
+#import "LTMorphingLabel.h"
 #import "myUILabel.h"
-#import "SWTableViewCell.h"

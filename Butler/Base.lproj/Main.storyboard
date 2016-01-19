@@ -211,7 +211,7 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pNQ-yB-6kv">
-                                <rect key="frame" x="0.0" y="140" width="600" height="513"/>
+                                <rect key="frame" x="0.0" y="90" width="600" height="510"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="mainCell" rowHeight="100" id="Ybx-07-I5n" customClass="MainTableViewCell" customModule="Butler" customModuleProvider="target">
@@ -281,9 +281,9 @@
                         <constraints>
                             <constraint firstItem="Pcc-yA-W0j" firstAttribute="centerX" secondItem="JF1-bt-UJs" secondAttribute="centerX" id="B8E-cV-OKE"/>
                             <constraint firstItem="Pcc-yA-W0j" firstAttribute="top" secondItem="we6-zj-m2B" secondAttribute="bottom" constant="-29" id="V6o-rx-kfb"/>
-                            <constraint firstItem="pNQ-yB-6kv" firstAttribute="top" secondItem="Pcc-yA-W0j" secondAttribute="bottom" constant="65" id="W8S-9t-Zyg"/>
+                            <constraint firstItem="pNQ-yB-6kv" firstAttribute="top" secondItem="Pcc-yA-W0j" secondAttribute="bottom" constant="15" id="W8S-9t-Zyg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pNQ-yB-6kv" secondAttribute="trailing" constant="-20" id="XwZ-2o-iI1"/>
-                            <constraint firstItem="4oV-zN-4es" firstAttribute="top" secondItem="pNQ-yB-6kv" secondAttribute="bottom" constant="-53" id="Ym7-qM-p9p"/>
+                            <constraint firstItem="4oV-zN-4es" firstAttribute="top" secondItem="pNQ-yB-6kv" secondAttribute="bottom" id="Ym7-qM-p9p"/>
                             <constraint firstItem="pNQ-yB-6kv" firstAttribute="leading" secondItem="JF1-bt-UJs" secondAttribute="leadingMargin" constant="-20" id="pIe-Pt-Snk"/>
                         </constraints>
                     </view>
@@ -375,7 +375,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Butler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRu-fb-zGf">
                                 <rect key="frame" x="309" y="571.5" width="43" height="20.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -466,7 +466,7 @@
         <!--Navigation Controller-->
         <scene sceneID="LzJ-Rq-jJQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="owh-h6-qPk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DetailVCNV" automaticallyAdjustsScrollViewInsets="NO" id="owh-h6-qPk" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qT6-s7-zuo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -479,7 +479,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbl-A3-hgi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3455" y="1155"/>
+            <point key="canvasLocation" x="3497" y="1155"/>
         </scene>
     </scenes>
     <resources>

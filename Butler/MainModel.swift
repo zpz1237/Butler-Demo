@@ -9,23 +9,15 @@
 import Foundation
 
 struct ContentModel {
+    var id: Int
     var type: String
     var image: String
     var time: String
     var content: String
+    var categoryType: String
 }
 
 struct MainText {
-    static var textArrayAtFirst = [
-        "",
-        "",
-        "您会收到这样的通知",
-        "左划回应",
-        "右滑返回",
-        "可处理的通知，都在这",
-        "点击可配置"
-    ]
-    
     static var sampleData: [ContentModel] = [
 
     ]
@@ -63,10 +55,11 @@ struct MainText {
         let notification = UILocalNotification()
         notification.alertTitle = contentModel.type
         notification.alertBody = NSString(string: contentModel.content).substringFromIndex(4)
-        notification.category = "TODO_CATEGORY"
+        notification.category = contentModel.categoryType
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.fireDate = notificationFireDate
         notification.repeatInterval = NSCalendarUnit.Day
+        notification.userInfo = ["index": contentModel.id]
         return notification
     }
     

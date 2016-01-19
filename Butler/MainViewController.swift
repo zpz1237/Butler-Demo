@@ -13,23 +13,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleImageView: UIImageView!
     
-    var titleLabel: LTMorphingLabel!
-    var labelChangedTimer: NSTimer!
-    var index = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         titleImageView.image = scaleToSize(UIImage(named: "Bow-Tie")!, size: titleImageView.frame.size)
-        
-        titleLabel = LTMorphingLabel(frame: CGRect(x: 30, y: 30, width: self.view.bounds.width - 60, height: 50))
-        titleLabel.center = CGPoint(x: self.view.center.x, y: self.titleImageView.center.y + 53)
-        titleLabel.textAlignment = .Center
-        titleLabel.textColor = CommonModel.appleBlack
-        titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24)
-        titleLabel.text = ""
-        titleLabel.morphingEffect = .Evaporate
-        self.view.addSubview(titleLabel)
         
         tableView.backgroundColor = CommonModel.zenGray
         tableView.delegate = self
@@ -47,26 +34,12 @@ class MainViewController: UIViewController {
         tableView.alpha = 0
         tableView.userInteractionEnabled = false
         
-        if (NSUserDefaults.standardUserDefaults().objectForKey(CommonModel.firstLaunchKey) as! Bool) {
-            self.labelChangedTimer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "changeText", userInfo: nil, repeats: true)
-            self.labelChangedTimer.fire()
-            
-            UIView.animateWithDuration(1.85, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: { () -> Void in
-                self.tableView.alpha = 1
-                self.tableView.transform = CGAffineTransformIdentity
-                }) { (finished) -> Void in
-                    NSUserDefaults.standardUserDefaults().setObject(false, forKey: CommonModel.firstLaunchKey)
-            }
+        if NSUserDefaults.standardUserDefaults().objectForKey(CommonModel.firstLaunchKey) as! Bool {
+            animateTableViewWithDuration(1.25)
+            NSUserDefaults.standardUserDefaults().setObject(false, forKey: CommonModel.firstLaunchKey)
         } else {
-            clearTextInTitleLabel()
-            UIView.animateWithDuration(1.25, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: { () -> Void in
-                self.tableView.alpha = 1
-                self.tableView.transform = CGAffineTransformMakeTranslation(0, -53)
-                }) { (finished) -> Void in
-                    self.tableView.userInteractionEnabled = true
-            }
+            animateTableViewWithDuration(1.25)
         }
-
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -77,12 +50,28 @@ class MainViewController: UIViewController {
         if segue.identifier == "showDetail" {
             if let nav = segue.destinationViewController as? UINavigationController {
                 if let vc = nav.topViewController as? DetailViewController {
-                    vc.titleLabel.text = MainText.sampleData[self.tableView.indexPathForSelectedRow!.section].type
-                    vc.date = MainText.transformDataToNotification(MainText.sampleData[self.tableView.indexPathForSelectedRow!.section]).fireDate!
-                    vc.currentIndex = self.tableView.indexPathForSelectedRow!.section
-                    vc.delegate = self
+                    if let index = self.tableView.indexPathForSelectedRow?.section {
+                        vc.titleLabel.text = MainText.sampleData[index].type
+                        vc.date = MainText.transformDataToNotification(MainText.sampleData[index]).fireDate!
+                        vc.currentIndex = index
+                        vc.delegate = self
+                    }
                 }
             }
+        }
+    }
+    
+    /**
+     根据时间生成 tableView 的出现动画
+     
+     - parameter duration: 持续时间
+     */
+    func animateTableViewWithDuration(duration: Double) {
+        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: { () -> Void in
+            self.tableView.alpha = 1
+            self.tableView.transform = CGAffineTransformIdentity
+            }) { (finished) -> Void in
+                self.tableView.userInteractionEnabled = true
         }
     }
     
@@ -101,88 +90,12 @@ class MainViewController: UIViewController {
         UIGraphicsEndImageContext()
         return scaledImage
     }
-    
-    /**
-     隐藏 cell 的 rightUtilityButtons
-     */
-    func hideUtilityButtons() {
-        (self.tableView.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0)) as! MainTableViewCell).hideUtilityButtonsAnimated(true)
-    }
-    
-    /**
-     获取下一条 LoginText 中给定的文案
-     */
-    func changeText() {
-        index++
-        if index == MainText.textArrayAtFirst.count {
-            self.titleLabel.text = "愿意为您服务"
-            performSelector("clearTextInTitleLabel", withObject: nil, afterDelay: 1.5)
-            performSelector("moveTableViewUpward", withObject: nil, afterDelay: 2)
-            self.tableView.userInteractionEnabled = true
-            labelChangedTimer.invalidate()
-        } else {
-            self.titleLabel.text = MainText.textArrayAtFirst[index]
-            if index == 3 {
-                (self.tableView.cellForRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0)) as! MainTableViewCell).showRightUtilityButtonsAnimated(true)
-                self.performSelector("hideUtilityButtons", withObject: nil, afterDelay: 2.25)
-            }
-        }
-    }
-    
-    /**
-     清空 titleLabel 文字信息
-     */
-    func clearTextInTitleLabel() {
-        self.titleLabel.text = ""
-    }
-    
-    /**
-     使 tableView 上移遮住 titleLabel
-     */
-    func moveTableViewUpward() {
-        UIView.animateWithDuration(0.85, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: { () -> Void in
-            self.tableView.transform = CGAffineTransformMakeTranslation(0, -53)
-            }) { (finished) -> Void in
-        }
-    }
-    
-    /**
-     将选中的提醒时间推迟半个小时
-     
-     - parameter selectedSection: 选中的 Section
-     */
-    func delayTheNotification(selectedSection: Int) {
-        let oldTime = MainText.sampleData[selectedSection].time
-        var hour = Int(NSString(string: oldTime).substringToIndex(2))
-        var minuteString = NSString(string: oldTime).substringFromIndex(3)
-        var newHourString: NSString = ""
-        if minuteString == "00" {
-            minuteString = "30"
-        } else if minuteString == "30" {
-            minuteString = "00"
-            hour! += 1
-        }
-        
-        newHourString = NSString(string: String(hour!))
-        if newHourString.length == 1 {
-            newHourString = "0" + (newHourString as String)
-        }
-        
-        let newTime = (newHourString as String) + ":" + minuteString
-        print(newTime)
-        
-        MainText.sampleData[selectedSection].time = newTime
-        self.tableView.reloadSections(NSIndexSet(index: selectedSection), withRowAnimation: .Right)
-        MainText.scheduleLocalNotification()
-    }
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("mainCell") as! MainTableViewCell
         
-        cell.delegate = self
-        cell.rightUtilityButtons = self.rightButtons() as [AnyObject]
         cell.notificationType.text = MainText.sampleData[indexPath.section].type
         cell.notificationImageView.image = UIImage(named: MainText.sampleData[indexPath.section].image)
         cell.notificationTimeLabel.text = MainText.sampleData[indexPath.section].time
@@ -211,29 +124,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 6))
         headerView.backgroundColor = CommonModel.zenGray
         return headerView
-    }
-}
-
-extension MainViewController: SWTableViewCellDelegate {
-    func rightButtons() -> NSMutableArray {
-        let rightUtilityButtons: NSMutableArray = []
-        rightUtilityButtons.sw_addUtilityButtonWithColor(CommonModel.zenBlue, title: "好的")
-        rightUtilityButtons.sw_addUtilityButtonWithColor(CommonModel.tieBlack, title: "稍后")
-        rightUtilityButtons.sw_addUtilityButtonWithColor(UIColor.lightGrayColor(), title: "忽略")
-        return rightUtilityButtons
-    }
-    
-    func swipeableTableViewCell(cell: SWTableViewCell!, didTriggerRightUtilityButtonWithIndex index: Int) {
-        switch index {
-        case 0:
-            print("ok")
-        case 1:
-            delayTheNotification((self.tableView.indexPathForCell(cell)?.section)!)
-        case 2:
-            print("ignore")
-        default:
-            ()
-        }
     }
 }
 

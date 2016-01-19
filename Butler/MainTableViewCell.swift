@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainTableViewCell: SWTableViewCell {
+class MainTableViewCell: UITableViewCell {
 
     @IBOutlet weak var notificationContentLabel: myUILabel!
     @IBOutlet weak var notificationType: UILabel!
