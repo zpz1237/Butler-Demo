@@ -7,18 +7,29 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct ContentModel {
-    var id: Int
-    var type: String
-    var image: String
-    var time: String
-    var content: String
-    var categoryType: String
+class ContentModel: Object {
+    dynamic var id: Int = -1
+    dynamic var type: String = ""
+    dynamic var image: String = ""
+    dynamic var time: String = ""
+    dynamic var content: String = ""
+    dynamic var categoryType: String = ""
+    
+    convenience required init(id: Int, type: String, image: String, time: String, content: String, categoryType: String) {
+        self.init()
+        self.id = id
+        self.type = type
+        self.image = image
+        self.time = time
+        self.content = content
+        self.categoryType = categoryType
+    }
 }
 
 struct MainText {
-    static var sampleData: [ContentModel] = [
+    static var notificationData: [ContentModel] = [
 
     ]
     
@@ -64,22 +75,18 @@ struct MainText {
     }
     
     /**
-     清除之前的通知，并根据此时 sampleData 的数据设置新通知
+     清除之前的通知，并根据此时 notificationData 的数据设置新通知
      */
     static func scheduleLocalNotification() {
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
-        let notificationFromSampleData = [
-            MainText.transformDataToNotification(MainText.sampleData[0]),
-            MainText.transformDataToNotification(MainText.sampleData[1]),
-            MainText.transformDataToNotification(MainText.sampleData[2]),
-            MainText.transformDataToNotification(MainText.sampleData[3]),
-            MainText.transformDataToNotification(MainText.sampleData[4])
-        ]
-        
-        for i in 0 ..< notificationFromSampleData.count {
-            UIApplication.sharedApplication().scheduleLocalNotification(notificationFromSampleData[i])
+        var notifications: [UILocalNotification] = []
+        for i in 0 ..< MainText.notificationData.count {
+            notifications.append(MainText.transformDataToNotification(MainText.notificationData[i]))
+        }
+
+        for i in 0 ..< notifications.count {
+            UIApplication.sharedApplication().scheduleLocalNotification(notifications[i])
         }
     }
-    
 }

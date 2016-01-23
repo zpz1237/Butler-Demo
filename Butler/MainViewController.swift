@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController {
 
@@ -34,12 +35,7 @@ class MainViewController: UIViewController {
         tableView.alpha = 0
         tableView.userInteractionEnabled = false
         
-        if NSUserDefaults.standardUserDefaults().objectForKey(CommonModel.firstLaunchKey) as! Bool {
-            animateTableViewWithDuration(1.25)
-            NSUserDefaults.standardUserDefaults().setObject(false, forKey: CommonModel.firstLaunchKey)
-        } else {
-            animateTableViewWithDuration(1.25)
-        }
+        animateTableViewWithDuration(1.25)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -51,8 +47,8 @@ class MainViewController: UIViewController {
             if let nav = segue.destinationViewController as? UINavigationController {
                 if let vc = nav.topViewController as? DetailViewController {
                     if let index = self.tableView.indexPathForSelectedRow?.section {
-                        vc.titleLabel.text = MainText.sampleData[index].type
-                        vc.date = MainText.transformDataToNotification(MainText.sampleData[index]).fireDate!
+                        vc.titleLabel.text = MainText.notificationData[index].type
+                        vc.date = MainText.transformDataToNotification(MainText.notificationData[index]).fireDate!
                         vc.currentIndex = index
                         vc.delegate = self
                     }
@@ -96,10 +92,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("mainCell") as! MainTableViewCell
         
-        cell.notificationType.text = MainText.sampleData[indexPath.section].type
-        cell.notificationImageView.image = UIImage(named: MainText.sampleData[indexPath.section].image)
-        cell.notificationTimeLabel.text = MainText.sampleData[indexPath.section].time
-        cell.notificationContentLabel.text = MainText.sampleData[indexPath.section].content
+        cell.notificationType.text = MainText.notificationData[indexPath.section].type
+        cell.notificationImageView.image = UIImage(named: MainText.notificationData[indexPath.section].image)
+        cell.notificationTimeLabel.text = MainText.notificationData[indexPath.section].time
+        cell.notificationContentLabel.text = MainText.notificationData[indexPath.section].content
         
         return cell
     }
@@ -113,7 +109,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return MainText.sampleData.count
+        return MainText.notificationData.count
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -129,7 +125,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController: DetailViewControllerDelegate {
     /**
-     根据选中的时间设置 sampleDate 以及更新 view 和 localNotification
+     根据选中的时间更新数据库 以及更新 view 和 localNotification
      
      - parameter modifiedDate: 设置页面所选中的时间
      - parameter selectedSection: 之前选中的 Section
@@ -143,7 +139,7 @@ extension MainViewController: DetailViewControllerDelegate {
         var timeString = ""
         
         if minute.length == 1 {
-            minute = (minute as String) + "0"
+            minute = "0" + (minute as String)
         }
         if hour.length == 1 {
             hour = "0" + (hour as String)
@@ -151,8 +147,11 @@ extension MainViewController: DetailViewControllerDelegate {
         
         timeString = "\(hour)" + ":" + "\(minute)"
         
-        MainText.sampleData[selectedSection].time = timeString
-
+        let realm = try! Realm()
+        realm.beginWrite()
+        MainText.notificationData[selectedSection].time = timeString
+        try! realm.commitWrite()
+        
         self.tableView.reloadSections(NSIndexSet(index: selectedSection), withRowAnimation: .Automatic)
         MainText.scheduleLocalNotification()
     }

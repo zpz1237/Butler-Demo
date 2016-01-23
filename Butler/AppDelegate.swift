@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,37 +17,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let sB = UIStoryboard(name: "Main", bundle: nil)
-        if let isFirstLaunch = NSUserDefaults.standardUserDefaults().objectForKey(CommonModel.firstLaunchKey) {
-            if (isFirstLaunch as! Bool) {
-                self.window?.rootViewController = sB.instantiateViewControllerWithIdentifier("LaunchVC")
-            } else {
-                self.window?.rootViewController = sB.instantiateViewControllerWithIdentifier("MainVCNV")
-            }
+        if let _ = NSUserDefaults.standardUserDefaults().objectForKey(CommonModel.firstLaunchKey) {
+            
+            self.window?.rootViewController = sB.instantiateViewControllerWithIdentifier("MainVCNV")
         } else {
             self.window?.rootViewController = sB.instantiateViewControllerWithIdentifier("LaunchVC")
-            NSUserDefaults.standardUserDefaults().setObject(true, forKey: CommonModel.firstLaunchKey)
+            
+            initializeDatabase()
+            NSUserDefaults.standardUserDefaults().setObject("NotFirstLaunch", forKey: CommonModel.firstLaunchKey)
         }
         
-        //记得写入
-        if let sampleDataCached = NSUserDefaults.standardUserDefaults().objectForKey(CommonModel.sampleDataKey) {
-            MainText.sampleData = sampleDataCached as! [ContentModel]
-        } else {
-            MainText.sampleData = [
-                ContentModel(id: 0, type: "天气提醒", image: "Rain", time: "08:00", content: "    起床啦 起床啦。", categoryType: "CATEGORY_TYPE2"),
-                ContentModel(id: 1, type: "午餐提醒", image: "Lunch", time: "11:00", content: "    您该准备吃午餐了。", categoryType: "CATEGORY_TYPE1"),
-                ContentModel(id: 2, type: "晚餐提醒", image: "Dinner", time: "17:00", content: "    到了吃晚餐的时间了。", categoryType: "CATEGORY_TYPE1"),
-                ContentModel(id: 3, type: "早餐预订", image: "Breakfast", time: "22:00", content: "    是否需要预定明天的早餐呢。", categoryType: "CATEGORY_TYPE1"),
-                ContentModel(id: 4, type: "睡眠提醒", image: "Sleep", time: "23:00", content: "    您该休息了。", categoryType: "CATEGORY_TYPE2")
-            ]
-        }
+        retrieveData()
         
         registerNotification()
+        
         return true
     }
 
     /**
      注册本地系统通知
-     
      */
     func registerNotification() {
         let detailAction = UIMutableUserNotificationAction()
@@ -86,6 +75,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes:([UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge]) , categories: NSSet(array: [categoryType1, categoryType2]) as? Set<UIUserNotificationCategory>))
     }
     
+    /**
+     初始化数据库
+     */
+    func initializeDatabase() {
+        let realm = try! Realm()
+        
+        realm.beginWrite()
+        realm.add(ContentModel(id: 0, type: "天气提醒", image: "Rain", time: "08:00", content: "    起床啦 起床啦。", categoryType: "CATEGORY_TYPE2"))
+        realm.add(ContentModel(id: 1, type: "午餐提醒", image: "Lunch", time: "11:00", content: "    您该准备吃午餐了。", categoryType: "CATEGORY_TYPE1"))
+        realm.add(ContentModel(id: 2, type: "晚餐提醒", image: "Dinner", time: "17:00", content: "    到了吃晚餐的时间了。", categoryType: "CATEGORY_TYPE1"))
+        realm.add(ContentModel(id: 3, type: "早餐预订", image: "Breakfast", time: "22:00", content: "    是否需要预定明天的早餐呢。", categoryType: "CATEGORY_TYPE1"))
+        realm.add(ContentModel(id: 4, type: "睡眠提醒", image: "Sleep", time: "23:00", content: "    您该休息了。", categoryType: "CATEGORY_TYPE2"))
+        try! realm.commitWrite()
+    }
+    
+    /**
+     从数据库中读取数据到内存
+     */
+    func retrieveData() {
+        let realm = try! Realm()
+        
+        let results = realm.objects(ContentModel)
+        for result in results {
+            MainText.notificationData.append(result)
+        }
+    }
+    
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         print(notification.category)
     }
@@ -100,6 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             notification.fireDate = NSDate().dateByAddingTimeInterval(600)
             notification.repeatInterval = NSCalendarUnit.Era
             application.scheduleLocalNotification(notification)
+            print(application.scheduledLocalNotifications)
         } else if identifier == "REMIND15" {
             notification.fireDate = NSDate().dateByAddingTimeInterval(900)
             notification.repeatInterval = NSCalendarUnit.Era
