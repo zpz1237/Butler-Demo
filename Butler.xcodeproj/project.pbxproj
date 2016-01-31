@@ -24,7 +24,6 @@
 		DB1442721C4DB3610075F23B /* Fragment.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1442611C4DB3610075F23B /* Fragment.png */; };
 		DB1442731C4DB3610075F23B /* Smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1442621C4DB3610075F23B /* Smoke.png */; };
 		DB1442741C4DB3610075F23B /* Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1442631C4DB3610075F23B /* Sparkle.png */; };
-		DB5C30491C38C5BF000848A0 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C30481C38C5BF000848A0 /* MainTableViewCell.swift */; };
 		DB5C304D1C38DE1E000848A0 /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5C304C1C38DE1E000848A0 /* myUILabel.m */; };
 		DB5C304F1C39158E000848A0 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5C304E1C39158E000848A0 /* MainModel.swift */; };
 		DB6C3E581C34FE2B000A43AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C3E571C34FE2B000A43AC /* AppDelegate.swift */; };
@@ -42,6 +41,7 @@
 		DBE5533F1C5301ED004A4FFC /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DBE5533C1C5301ED004A4FFC /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DBE553401C5301ED004A4FFC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE5533D1C5301ED004A4FFC /* Realm.framework */; };
 		DBE553411C5301ED004A4FFC /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DBE5533D1C5301ED004A4FFC /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DBEB40D91C5D92F500794298 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEB40D81C5D92F500794298 /* WeatherTableViewCell.swift */; };
 		DBFE69A91C37B5F5009717A7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFE69A81C37B5F5009717A7 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +79,6 @@
 		DB1442611C4DB3610075F23B /* Fragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fragment.png; sourceTree = "<group>"; };
 		DB1442621C4DB3610075F23B /* Smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smoke.png; sourceTree = "<group>"; };
 		DB1442631C4DB3610075F23B /* Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparkle.png; sourceTree = "<group>"; };
-		DB5C30481C38C5BF000848A0 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		DB5C304B1C38DE1E000848A0 /* myUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myUILabel.h; sourceTree = "<group>"; };
 		DB5C304C1C38DE1E000848A0 /* myUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myUILabel.m; sourceTree = "<group>"; };
 		DB5C304E1C39158E000848A0 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		DB96F9ED1C3E39960014D10D /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DBE5533C1C5301ED004A4FFC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = ../RealmSwift.framework; sourceTree = "<group>"; };
 		DBE5533D1C5301ED004A4FFC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../Realm.framework; sourceTree = "<group>"; };
+		DBEB40D81C5D92F500794298 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		DBFE69A81C37B5F5009717A7 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,9 +251,9 @@
 			isa = PBXGroup;
 			children = (
 				DBFE69A81C37B5F5009717A7 /* MainViewController.swift */,
-				DB5C30481C38C5BF000848A0 /* MainTableViewCell.swift */,
 				DB5C304E1C39158E000848A0 /* MainModel.swift */,
 				DB96F9ED1C3E39960014D10D /* DetailViewController.swift */,
+				DBEB40D81C5D92F500794298 /* WeatherTableViewCell.swift */,
 			);
 			name = MainModule;
 			sourceTree = "<group>";
@@ -336,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBEB40D91C5D92F500794298 /* WeatherTableViewCell.swift in Sources */,
 				DB1442661C4DB3610075F23B /* LTEasing.swift in Sources */,
 				DB14426E1C4DB3610075F23B /* LTMorphingLabel+Sparkle.swift in Sources */,
 				DB14426A1C4DB3610075F23B /* LTMorphingLabel+Burn.swift in Sources */,
@@ -350,7 +351,6 @@
 				DB6C3E581C34FE2B000A43AC /* AppDelegate.swift in Sources */,
 				DB6C3E751C350033000A43AC /* LaunchTextModel.swift in Sources */,
 				DB14426C1C4DB3610075F23B /* LTMorphingLabel+Fall.swift in Sources */,
-				DB5C30491C38C5BF000848A0 /* MainTableViewCell.swift in Sources */,
 				DB5C304F1C39158E000848A0 /* MainModel.swift in Sources */,
 				DB1442701C4DB3610075F23B /* NSString+LTMorphingLabel.swift in Sources */,
 				DB6C3E701C34FEB5000A43AC /* RQShineLabel.m in Sources */,
@@ -513,7 +513,7 @@
 				DB6C3E651C34FE2C000A43AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		DB6C3E661C34FE2C000A43AC /* Build configuration list for PBXNativeTarget "Butler" */ = {
 			isa = XCConfigurationList;
@@ -522,7 +522,7 @@
 				DB6C3E681C34FE2C000A43AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

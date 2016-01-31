@@ -12,34 +12,33 @@ import RealmSwift
 class MainViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var titleImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleImageView.image = scaleToSize(UIImage(named: "Bow-Tie")!, size: titleImageView.frame.size)
-        
         tableView.backgroundColor = CommonModel.zenGray
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .None
-        tableView.rowHeight = 100
+        tableView.rowHeight = 120
         
         self.view.backgroundColor = CommonModel.zenGray
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.barTintColor = CommonModel.appleBlack
         
         MainText.scheduleLocalNotification()
         
         tableView.transform = CGAffineTransformMakeTranslation(0, self.view.bounds.height)
         tableView.alpha = 0
-        tableView.userInteractionEnabled = false
         
         animateTableViewWithDuration(1.25)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -67,41 +66,31 @@ class MainViewController: UIViewController {
             self.tableView.alpha = 1
             self.tableView.transform = CGAffineTransformIdentity
             }) { (finished) -> Void in
-                self.tableView.userInteractionEnabled = true
         }
-    }
-    
-    /**
-     重绘图片以消除锯齿
-     
-     - parameter image: 需重绘的图片
-     - parameter size:  放置位置的大小
-     
-     - returns: 重绘后的图片
-     */
-    func scaleToSize(image: UIImage, size: CGSize) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-        image.drawInRect(CGRect(origin: CGPointZero, size: size))
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return scaledImage
     }
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("mainCell") as! MainTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell") as! WeatherTableViewCell
         
-        cell.notificationType.text = MainText.notificationData[indexPath.section].type
-        cell.notificationImageView.image = UIImage(named: MainText.notificationData[indexPath.section].image)
-        cell.notificationTimeLabel.text = MainText.notificationData[indexPath.section].time
-        cell.notificationContentLabel.text = MainText.notificationData[indexPath.section].content
+        cell.selected = false
+        
+//        cell.notificationType.text = MainText.notificationData[indexPath.section].type
+//        cell.notificationImageView.image = UIImage(named: MainText.notificationData[indexPath.section].image)
+//        cell.notificationTimeLabel.text = MainText.notificationData[indexPath.section].time
+//        cell.notificationContentLabel.text = MainText.notificationData[indexPath.section].content
+        
+//        cell.weatherImageView.image = UIImage(named: MainText.notificationData[indexPath.section].image)
+        cell.temperatureLabel.text = "7"
+//        cell.contentLabel.text = MainText.notificationData[indexPath.section].content
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("showDetail", sender: nil)
+        print("clicked")
+        //performSegueWithIdentifier("showDetail", sender: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -113,12 +102,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 6
+        return 1
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 6))
-        headerView.backgroundColor = CommonModel.zenGray
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 1))
+        headerView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.1)
         return headerView
     }
 }
@@ -148,9 +137,9 @@ extension MainViewController: DetailViewControllerDelegate {
         timeString = "\(hour)" + ":" + "\(minute)"
         
         let realm = try! Realm()
-        realm.beginWrite()
-        MainText.notificationData[selectedSection].time = timeString
-        try! realm.commitWrite()
+        try! realm.write { () -> Void in
+            MainText.notificationData[selectedSection].time = timeString
+        }
         
         self.tableView.reloadSections(NSIndexSet(index: selectedSection), withRowAnimation: .Automatic)
         MainText.scheduleLocalNotification()

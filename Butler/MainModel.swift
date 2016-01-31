@@ -17,7 +17,7 @@ class ContentModel: Object {
     dynamic var content: String = ""
     dynamic var categoryType: String = ""
     
-    convenience required init(id: Int, type: String, image: String, time: String, content: String, categoryType: String) {
+    required convenience init(id: Int, type: String, image: String, time: String, content: String, categoryType: String) {
         self.init()
         self.id = id
         self.type = type
