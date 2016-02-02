@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DetailViewControllerDelegate {
-    func updateData(modifiedDate: NSDate, selectedSection: Int)
+    func updateData(modifiedDate: NSDate, selectedRow: Int)
 }
 
 class DetailViewController: UIViewController {
@@ -58,16 +58,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func DoneAction(sender: UIButton) {
         let modifiedDate = self.datePicker.date
-        self.delegate?.updateData(modifiedDate, selectedSection: currentIndex)
+        self.delegate?.updateData(modifiedDate, selectedRow: currentIndex)
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-}
-
-extension UINavigationController {
-    public override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        if let barStyle = self.topViewController?.preferredStatusBarStyle() {
-            return barStyle
-        }
-        return .Default
     }
 }

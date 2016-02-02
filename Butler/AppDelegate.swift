@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.window?.rootViewController = sB.instantiateViewControllerWithIdentifier("MainVCNV")
         } else {
-            self.window?.rootViewController = sB.instantiateViewControllerWithIdentifier("LaunchVC")
             
+            self.window?.rootViewController = sB.instantiateViewControllerWithIdentifier("LaunchVC")
             initializeDatabase()
             NSUserDefaults.standardUserDefaults().setObject("NotFirstLaunch", forKey: CommonModel.firstLaunchKey)
         }

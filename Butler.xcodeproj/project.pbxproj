@@ -37,6 +37,8 @@
 		DB6C79701C3639A200FC4C10 /* CommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C796F1C3639A200FC4C10 /* CommonModel.swift */; };
 		DB6C79971C36746700FC4C10 /* LoginTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C79961C36746700FC4C10 /* LoginTextModel.swift */; };
 		DB96F9EE1C3E39960014D10D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB96F9ED1C3E39960014D10D /* DetailViewController.swift */; };
+		DBA777E81C5EFD2E0004806F /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA777E71C5EFD2E0004806F /* WeatherViewController.swift */; };
+		DBA777EB1C5F87B40004806F /* ExpandingCellTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA777EA1C5F87B40004806F /* ExpandingCellTransition.swift */; };
 		DBE5533E1C5301ED004A4FFC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE5533C1C5301ED004A4FFC /* RealmSwift.framework */; };
 		DBE5533F1C5301ED004A4FFC /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DBE5533C1C5301ED004A4FFC /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DBE553401C5301ED004A4FFC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE5533D1C5301ED004A4FFC /* Realm.framework */; };
@@ -97,6 +99,8 @@
 		DB6C796F1C3639A200FC4C10 /* CommonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonModel.swift; sourceTree = "<group>"; };
 		DB6C79961C36746700FC4C10 /* LoginTextModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextModel.swift; sourceTree = "<group>"; };
 		DB96F9ED1C3E39960014D10D /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DBA777E71C5EFD2E0004806F /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		DBA777EA1C5F87B40004806F /* ExpandingCellTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandingCellTransition.swift; sourceTree = "<group>"; };
 		DBE5533C1C5301ED004A4FFC /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = ../RealmSwift.framework; sourceTree = "<group>"; };
 		DBE5533D1C5301ED004A4FFC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../Realm.framework; sourceTree = "<group>"; };
 		DBEB40D81C5D92F500794298 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
@@ -238,6 +242,15 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		DBA777E91C5F854A0004806F /* WeatherModule */ = {
+			isa = PBXGroup;
+			children = (
+				DBEB40D81C5D92F500794298 /* WeatherTableViewCell.swift */,
+				DBA777E71C5EFD2E0004806F /* WeatherViewController.swift */,
+			);
+			name = WeatherModule;
+			sourceTree = "<group>";
+		};
 		DBE553431C5301FC004A4FFC /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,7 +266,8 @@
 				DBFE69A81C37B5F5009717A7 /* MainViewController.swift */,
 				DB5C304E1C39158E000848A0 /* MainModel.swift */,
 				DB96F9ED1C3E39960014D10D /* DetailViewController.swift */,
-				DBEB40D81C5D92F500794298 /* WeatherTableViewCell.swift */,
+				DBA777EA1C5F87B40004806F /* ExpandingCellTransition.swift */,
+				DBA777E91C5F854A0004806F /* WeatherModule */,
 			);
 			name = MainModule;
 			sourceTree = "<group>";
@@ -345,6 +359,7 @@
 				DB1442651C4DB3610075F23B /* LTCharacterLimbo.swift in Sources */,
 				DB14426F1C4DB3610075F23B /* LTMorphingLabel.swift in Sources */,
 				DB1442691C4DB3610075F23B /* LTMorphingLabel+Anvil.swift in Sources */,
+				DBA777EB1C5F87B40004806F /* ExpandingCellTransition.swift in Sources */,
 				DBFE69A91C37B5F5009717A7 /* MainViewController.swift in Sources */,
 				DB5C304D1C38DE1E000848A0 /* myUILabel.m in Sources */,
 				DB1442671C4DB3610075F23B /* LTEmitterView.swift in Sources */,
@@ -352,6 +367,7 @@
 				DB6C3E751C350033000A43AC /* LaunchTextModel.swift in Sources */,
 				DB14426C1C4DB3610075F23B /* LTMorphingLabel+Fall.swift in Sources */,
 				DB5C304F1C39158E000848A0 /* MainModel.swift in Sources */,
+				DBA777E81C5EFD2E0004806F /* WeatherViewController.swift in Sources */,
 				DB1442701C4DB3610075F23B /* NSString+LTMorphingLabel.swift in Sources */,
 				DB6C3E701C34FEB5000A43AC /* RQShineLabel.m in Sources */,
 				DB14426B1C4DB3610075F23B /* LTMorphingLabel+Evaporate.swift in Sources */,
@@ -474,10 +490,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Butler",
 				);
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Butler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Butler",
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Zen.Butler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Butler/Butler-Bridging-Header.h";
@@ -493,10 +515,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Butler",
 				);
 				GCC_VERSION = "";
 				INFOPLIST_FILE = Butler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Butler",
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Zen.Butler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Butler/Butler-Bridging-Header.h";
