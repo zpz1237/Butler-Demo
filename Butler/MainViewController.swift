@@ -75,9 +75,20 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell") as! WeatherTableViewCell
+        let data = MainText.notificationData[indexPath.row]
         
-        cell.selected = false
+        if data.type == "天气" {
+            let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell") as! WeatherTableViewCell
+            cell.temperatureLabel.text = "7"
+            cell.weatherImageView.image = UIImage(named: data.image)
+            cell.contentLabel.text = data.content
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("mealCell") as! MealTableViewCell
+        cell.typeLabel.text = data.type
+        cell.mealImageView.image = UIImage(named: data.image)
+        cell.contentLabel.text = data.content
         
 //        cell.notificationType.text = MainText.notificationData[indexPath.section].type
 //        cell.notificationImageView.image = UIImage(named: MainText.notificationData[indexPath.section].image)
@@ -85,7 +96,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 //        cell.notificationContentLabel.text = MainText.notificationData[indexPath.section].content
         
 //        cell.weatherImageView.image = UIImage(named: MainText.notificationData[indexPath.section].image)
-        cell.temperatureLabel.text = "7"
 //        cell.contentLabel.text = MainText.notificationData[indexPath.section].content
         
         return cell
@@ -94,7 +104,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //performSegueWithIdentifier("showDetail", sender: nil)
         selectedIndexPath = indexPath
-        performSegueWithIdentifier("showWeather", sender: nil)
+        //performSegueWithIdentifier("showWeather", sender: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

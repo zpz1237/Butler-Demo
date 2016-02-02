@@ -93,19 +93,6 @@ class ExpandingCellTransition: NSObject, UIViewControllerAnimatedTransitioning, 
             case .Initial:
                 topRegionSnapshot.frame = CGRect(x: 0, y: 0, width: width, height: targetFrame.minY)
                 bottomRegionSnapshot.frame = CGRect(x: 0, y: targetFrame.maxY, width: width, height: height-targetFrame.maxY)
-                
-                //这里是重点 保护区起点
-//                print(targetFrame)
-//                
-//                for subview in targetContainer.subviews {
-//                    subview.removeFromSuperview()
-//                }
-//                
-//                let view = UIView(frame: targetFrame)
-//                view.backgroundColor = CommonModel.zenGray
-//                
-//                targetContainer.addSubview(view)
-                //保护区终点
                 targetContainer.frame = targetFrame
                 
                 targetSnapshot.alpha = 1
@@ -117,7 +104,6 @@ class ExpandingCellTransition: NSObject, UIViewControllerAnimatedTransitioning, 
                 bottomRegionSnapshot.frame = CGRect(x: 0, y: height, width: width, height: height-targetFrame.maxY)
                 //            print("foregroundViewxxxx", foregroundView.frame.height)
                 targetContainer.frame = fullFrame
-                
                 //            print("foregroundViewyyyy", foregroundView.frame.height)
                 targetSnapshot.alpha = 1
                 foregroundView.alpha = 0

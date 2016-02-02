@@ -1,21 +1,23 @@
 //
-//  WeatherTableViewCell.swift
+//  MealTableViewCell.swift
 //  Butler
 //
-//  Created by Nirvana on 1/31/16.
+//  Created by Nirvana on 2/2/16.
 //  Copyright © 2016 NSNirvana. All rights reserved.
 //
 
 import UIKit
 
-class WeatherTableViewCell: UITableViewCell {
+class MealTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var weatherImageView: UIImageView!
-    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var mealImageView: UIImageView!
     @IBOutlet weak var contentLabel: myUILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        mealImageView.contentMode = UIViewContentMode.ScaleAspectFill
         
         contentLabel.verticalAlignment = VerticalAlignmentMiddle
         contentLabel.textColor = CommonModel.appleBlack
@@ -26,10 +28,10 @@ class WeatherTableViewCell: UITableViewCell {
         selectedView.backgroundColor = CommonModel.zenGray
         self.selectedBackgroundView = selectedView
     }
-    
+
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
 
