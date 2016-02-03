@@ -228,7 +228,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="    起床啦 起床啦 愿您的心情像天气一样好。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zug-Is-Hxx" customClass="myUILabel">
-                                                    <rect key="frame" x="124" y="48" width="460.5" height="50"/>
+                                                    <rect key="frame" x="147" y="48" width="437.5" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="7ld-i6-FEh"/>
                                                     </constraints>
@@ -237,9 +237,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mg1-jL-K4G">
-                                                    <rect key="frame" x="109" y="74" width="20" height="20"/>
+                                                    <rect key="frame" x="112" y="74" width="19.5" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="5s2-nD-qVS"/>
                                                         <constraint firstAttribute="height" constant="20" id="uRw-ia-dU6"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -248,7 +247,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3k-M6-VwB">
                                                     <rect key="frame" x="81" y="43" width="28.5" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="50"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -257,19 +256,21 @@
                                                 <constraint firstItem="eEg-2J-Kw5" firstAttribute="leading" secondItem="Ngp-fy-ynJ" secondAttribute="leading" constant="15" id="1QY-6K-GQt"/>
                                                 <constraint firstItem="W3k-M6-VwB" firstAttribute="centerY" secondItem="s8F-Na-wPL" secondAttribute="centerY" id="AZ6-hU-knS"/>
                                                 <constraint firstItem="s8F-Na-wPL" firstAttribute="leading" secondItem="Ngp-fy-ynJ" secondAttribute="leadingMargin" constant="8" id="Asb-lb-G4B"/>
-                                                <constraint firstItem="mg1-jL-K4G" firstAttribute="leading" secondItem="W3k-M6-VwB" secondAttribute="trailing" id="Cv5-nb-PaY"/>
+                                                <constraint firstItem="mg1-jL-K4G" firstAttribute="leading" secondItem="W3k-M6-VwB" secondAttribute="trailing" constant="3" id="Cv5-nb-PaY"/>
                                                 <constraint firstItem="Zug-Is-Hxx" firstAttribute="centerY" secondItem="W3k-M6-VwB" secondAttribute="centerY" id="E8r-QO-4Hf"/>
                                                 <constraint firstAttribute="trailing" secondItem="Zug-Is-Hxx" secondAttribute="trailing" constant="15" id="JOJ-8O-YrZ"/>
                                                 <constraint firstItem="mg1-jL-K4G" firstAttribute="bottom" secondItem="W3k-M6-VwB" secondAttribute="bottom" constant="-9" id="Jno-K1-7rW"/>
-                                                <constraint firstItem="Zug-Is-Hxx" firstAttribute="leading" secondItem="W3k-M6-VwB" secondAttribute="trailing" constant="15" id="b4o-LR-5Gm"/>
+                                                <constraint firstItem="Zug-Is-Hxx" firstAttribute="leading" secondItem="mg1-jL-K4G" secondAttribute="trailing" constant="15" id="YJL-ib-YEc"/>
                                                 <constraint firstItem="eEg-2J-Kw5" firstAttribute="top" secondItem="Ngp-fy-ynJ" secondAttribute="top" constant="8" id="hp2-g6-vXm"/>
                                                 <constraint firstItem="W3k-M6-VwB" firstAttribute="leading" secondItem="s8F-Na-wPL" secondAttribute="trailing" constant="15" id="lvF-sa-gxH"/>
                                                 <constraint firstItem="s8F-Na-wPL" firstAttribute="top" secondItem="eEg-2J-Kw5" secondAttribute="bottom" constant="20" id="ng3-jh-hK7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="accessoryLabel" destination="mg1-jL-K4G" id="rh9-1D-nMs"/>
                                             <outlet property="contentLabel" destination="Zug-Is-Hxx" id="I4d-9o-L2K"/>
                                             <outlet property="temperatureLabel" destination="W3k-M6-VwB" id="m47-Rb-tLT"/>
+                                            <outlet property="typeLabel" destination="eEg-2J-Kw5" id="dEe-uM-s7i"/>
                                             <outlet property="weatherImageView" destination="s8F-Na-wPL" id="dsS-vt-A9k"/>
                                             <segue destination="HFn-JE-vcx" kind="presentation" identifier="showWeather" id="2Bd-PC-uIa"/>
                                         </connections>
@@ -308,10 +309,10 @@
                                                 <constraint firstItem="JEe-NT-J3a" firstAttribute="leading" secondItem="FOy-b0-lWz" secondAttribute="trailing" constant="15" id="CS0-hi-c7J"/>
                                                 <constraint firstItem="FOy-b0-lWz" firstAttribute="leading" secondItem="AcJ-Yn-9uT" secondAttribute="leading" constant="16" id="MJN-TW-vHv"/>
                                                 <constraint firstItem="JEe-NT-J3a" firstAttribute="centerY" secondItem="FOy-b0-lWz" secondAttribute="centerY" id="aWH-2x-WY6"/>
+                                                <constraint firstAttribute="trailing" secondItem="JEe-NT-J3a" secondAttribute="trailing" constant="15" id="dET-3p-7Zg"/>
                                                 <constraint firstItem="cqA-M4-kuA" firstAttribute="top" secondItem="AcJ-Yn-9uT" secondAttribute="top" constant="8" id="fvI-QJ-rL8"/>
                                                 <constraint firstItem="cqA-M4-kuA" firstAttribute="leading" secondItem="AcJ-Yn-9uT" secondAttribute="leading" constant="16" id="hyy-7q-V5p"/>
                                                 <constraint firstItem="FOy-b0-lWz" firstAttribute="top" secondItem="cqA-M4-kuA" secondAttribute="bottom" constant="20" id="jrl-uZ-BH9"/>
-                                                <constraint firstAttribute="trailing" secondItem="JEe-NT-J3a" secondAttribute="trailing" constant="15" id="qMJ-01-5J8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -532,6 +533,7 @@
         <!--Weather View Controller-->
         <scene sceneID="zEQ-fd-y4O">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0aO-EZ-exW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="HFn-JE-vcx" customClass="WeatherViewController" customModule="Butler" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JwL-dq-rcv"/>
@@ -665,7 +667,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93333333730697632" green="0.93333333730697632" blue="0.93333333730697632" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="W78-52-kEx" firstAttribute="baseline" secondItem="xHI-un-jeB" secondAttribute="baseline" id="0Nx-oQ-4RG"/>
                             <constraint firstItem="aH8-kl-HOT" firstAttribute="height" secondItem="VgU-sm-7rf" secondAttribute="height" multiplier="1:6.18" id="0jT-Df-TgZ"/>
@@ -704,10 +706,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="temperatureLabel" destination="OA8-fL-Dut" id="hD9-Id-Q7T"/>
+                        <outlet property="temperatureLabel" destination="OA8-fL-Dut" id="fHK-PE-3KE"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0aO-EZ-exW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3497" y="436"/>
         </scene>

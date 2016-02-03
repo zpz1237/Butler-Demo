@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var selectedIndexPath: NSIndexPath?
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,28 +78,43 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let data = MainText.notificationData[indexPath.row]
         
-        if data.type == "天气" {
+        switch data.cellType {
+        case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell") as! WeatherTableViewCell
-            cell.temperatureLabel.text = "7"
+            cell.typeLabel.text = data.type
+            
+            let typeInfo = realm.objects(WeatherTypeInfo).filter("type contains '\(data.type)'")
+            cell.temperatureLabel.text = typeInfo[0].temperature
+            cell.accessoryLabel.text = typeInfo[0].accessory
+
             cell.weatherImageView.image = UIImage(named: data.image)
             cell.contentLabel.text = data.content
             return cell
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("mealCell") as! MealTableViewCell
+            cell.typeLabel.text = data.type
+            cell.mealImageView.image = UIImage(named: data.image)
+            cell.contentLabel.text = data.content
+            return cell
+        default:
+            return UITableViewCell()
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("mealCell") as! MealTableViewCell
-        cell.typeLabel.text = data.type
-        cell.mealImageView.image = UIImage(named: data.image)
-        cell.contentLabel.text = data.content
         
-//        cell.notificationType.text = MainText.notificationData[indexPath.section].type
-//        cell.notificationImageView.image = UIImage(named: MainText.notificationData[indexPath.section].image)
-//        cell.notificationTimeLabel.text = MainText.notificationData[indexPath.section].time
-//        cell.notificationContentLabel.text = MainText.notificationData[indexPath.section].content
         
-//        cell.weatherImageView.image = UIImage(named: MainText.notificationData[indexPath.section].image)
-//        cell.contentLabel.text = MainText.notificationData[indexPath.section].content
+//        if data.type == "天气" {
+//            let cell = tableView.dequeueReusableCellWithIdentifier("weatherCell") as! WeatherTableViewCell
+//            cell.temperatureLabel.text = "7"
+//            cell.weatherImageView.image = UIImage(named: data.image)
+//            cell.contentLabel.text = data.content
+//            return cell
+//        }
+//        
+//        let cell = tableView.dequeueReusableCellWithIdentifier("mealCell") as! MealTableViewCell
+//        cell.typeLabel.text = data.type
+//        cell.mealImageView.image = UIImage(named: data.image)
+//        cell.contentLabel.text = data.content
         
-        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

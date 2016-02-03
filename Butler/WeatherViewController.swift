@@ -9,7 +9,7 @@
 import UIKit
 
 class WeatherViewController: UIViewController {
-
+    
     @IBOutlet weak var temperatureLabel: UILabel!
     
     let transition = ExpandingCellTransition()
@@ -17,6 +17,7 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         transitioningDelegate = transition
+        self.view.backgroundColor = CommonModel.zenGray
     }
     
     override func prefersStatusBarHidden() -> Bool {

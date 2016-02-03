@@ -9,21 +9,36 @@
 import Foundation
 import RealmSwift
 
+class WeatherTypeInfo: Object {
+    dynamic var type: String = ""
+    dynamic var temperature: String = ""
+    dynamic var accessory: String = ""
+    
+    required convenience init(type: String, temperature: String, accessory: String) {
+        self.init()
+        self.type = type
+        self.temperature = temperature
+        self.accessory = accessory
+    }
+}
+
 class ContentModel: Object {
     dynamic var id: Int = -1
     dynamic var type: String = ""
     dynamic var image: String = ""
     dynamic var time: String = ""
     dynamic var content: String = ""
+    dynamic var cellType: Int = -1
     dynamic var categoryType: String = ""
     
-    required convenience init(id: Int, type: String, image: String, time: String, content: String, categoryType: String) {
+    required convenience init(id: Int, type: String, image: String, time: String, content: String, cellType: Int,  categoryType: String) {
         self.init()
         self.id = id
         self.type = type
         self.image = image
         self.time = time
         self.content = content
+        self.cellType = cellType
         self.categoryType = categoryType
     }
 }
@@ -65,7 +80,7 @@ struct MainText {
         
         let notification = UILocalNotification()
         notification.alertTitle = contentModel.type
-        notification.alertBody = NSString(string: contentModel.content).substringFromIndex(4)
+        notification.alertBody = NSString(string: contentModel.content) as String
         notification.category = contentModel.categoryType
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.fireDate = notificationFireDate

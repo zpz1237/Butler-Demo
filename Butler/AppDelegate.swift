@@ -78,13 +78,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      */
     func initializeDatabase() {
         let realm = try! Realm()
-        
         realm.beginWrite()
-        realm.add(ContentModel(id: 0, type: "天气", image: "Sun", time: "08:00", content: "    起床啦 起床啦 愿您的心情像天气一样好。", categoryType: "CATEGORY_TYPE2"))
-        realm.add(ContentModel(id: 1, type: "午餐", image: "Lunch", time: "11:00", content: "    我们根据您的口味为您特意挑选了午餐，点击查看。", categoryType: "CATEGORY_TYPE1"))
-        realm.add(ContentModel(id: 2, type: "健康", image: "Health", time: "22:00", content: "    您今天的健康目标完成了吗。", categoryType: "CATEGORY_TYPE1"))
-        realm.add(ContentModel(id: 3, type: "晚餐", image: "Dinner", time: "17:00", content: "    晚餐已为您选好，点击查看。", categoryType: "CATEGORY_TYPE1"))
-        realm.add(ContentModel(id: 4, type: "睡眠", image: "Sleep", time: "23:00", content: "    早睡早起身体好。", categoryType: "CATEGORY_TYPE2"))
+        
+        realm.add(ContentModel(id: 0, type: "天气", image: "Sun", time: "08:00", content: "起床啦 起床啦 愿您的心情像天气一样好。",cellType: 0, categoryType: "CATEGORY_TYPE2"))
+        realm.add(ContentModel(id: 1, type: "午餐", image: "Lunch", time: "11:00", content: "我们根据您的口味为您特意挑选了午餐，点击查看。", cellType: 1, categoryType: "CATEGORY_TYPE1"))
+        realm.add(ContentModel(id: 2, type: "健康", image: "Health", time: "22:00", content: "您今天的健康目标完成了吗。", cellType: 0, categoryType: "CATEGORY_TYPE1"))
+        realm.add(ContentModel(id: 3, type: "晚餐", image: "Dinner", time: "17:00", content: "来看看为您准备的晚餐吗。", cellType: 1, categoryType: "CATEGORY_TYPE1"))
+        realm.add(ContentModel(id: 4, type: "睡眠", image: "Sleep", time: "23:00", content: "早睡早起身体好。", cellType: 1, categoryType: "CATEGORY_TYPE2"))
+        
+        realm.add(WeatherTypeInfo(type: "天气", temperature: "15", accessory: "℃"))
+        realm.add(WeatherTypeInfo(type: "健康", temperature: "8.2", accessory: "千步"))
+        
         try! realm.commitWrite()
     }
     
